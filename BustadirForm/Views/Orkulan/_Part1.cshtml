@@ -1,0 +1,263 @@
+﻿@model BustadirForm.Models.Orkulan
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "Part1" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="container">
+            @*<div class="row">
+                    <div class="col-md-12">
+                        <h4>
+                            UMSÓKN UM LÁN TIL ORKUSPARANDI TILTAK
+                        </h4>
+                    </div>
+                </div>*@
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.Person.FullName, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.ApplicationBasicInfo.Person.FullName, new { htmlAttributes = new { @class = "form-control", @validationMessage = "Navn og eftirnavn" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.FullName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.Person.SSN, htmlAttributes: new { @class = "control-label bold-label" })
+                            <br />
+                            @Html.EditorFor(model => model.ApplicationBasicInfo.Person.SSN, new { htmlAttributes = new { @class = "form-control ssn-number", @style = "width:100%;", @validationMessage = "P-tal" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.SSN, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.Person.JobTitle, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.ApplicationBasicInfo.Person.JobTitle, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.JobTitle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.Person.MobilePhone, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.ApplicationBasicInfo.Person.MobilePhone, new { htmlAttributes = new { @class = "phone-number", @style = "width:100%;", @validationMessage = "Fartelefon" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.MobilePhone, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.Person.HomePhone, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.ApplicationBasicInfo.Person.HomePhone, new { htmlAttributes = new { @class = "phone-number", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.HomePhone, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.Person.WorkPhone, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.ApplicationBasicInfo.Person.WorkPhone, new { htmlAttributes = new { @class = "phone-number", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.WorkPhone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.Person.Address, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.ApplicationBasicInfo.Person.Address, new { htmlAttributes = new { @class = "form-control", @validationMessage = "Bústaður" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.Address, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.Person.Email, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.ApplicationBasicInfo.Person.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @validationMessage = "Teldupostur" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.Person.PostalCode, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.ApplicationBasicInfo.Person.PostalCode, new { htmlAttributes = new { @class = "form-control", @max=10, @validationMessage = "Postnummar" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.PostalCode, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.Person.City, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.ApplicationBasicInfo.Person.City, new { htmlAttributes = new { @class = "form-control", @validationMessage = "Býur / bygd" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.City, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.Person.Country, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.ApplicationBasicInfo.Person.Country, new { htmlAttributes = new { @class = "form-control", @validationMessage = "Land" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.Country, "", new { @class = "text-danger" })
+                        </div>
+                        @*<div class="col-md-6">
+                        @Html.LabelFor(model => model.ApplicationBasicInfo.Person.PhoneNumber, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <input id="ApplicationBasicInfo_Person_PhoneNumber" name="ApplicationBasicInfo.Person.PhoneNumber" value="@Model.ApplicationBasicInfo.Person.PhoneNumber" class="phone-number" style="width:100%;" data-validmask-msg="Telefonnummar er ikki rætt" required />
+                        @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.Person.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>*@
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" style="margin-top:50px;">
+                <div class="col-md-12">
+                    <h4>Um ognina</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="checkbox" name="PropertyInfoIsSame" id="PropertyInfoIsSame" autocomplete="off" />
+                    <label class="control-label">Sami?</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.ApplicationBasicInfo.PropertyInfo.RegisteredOwner, htmlAttributes: new { @class = "control-label bold-label" })
+                    @Html.EditorFor(model => model.ApplicationBasicInfo.PropertyInfo.RegisteredOwner, new { htmlAttributes = new { @class = "form-control", @validationMessage = "Navn á tinglýstum eigara av ognini" } })
+                    @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.PropertyInfo.RegisteredOwner, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.ApplicationBasicInfo.PropertyInfo.Address, htmlAttributes: new { @class = "control-label bold-label" })
+                    @Html.EditorFor(model => model.ApplicationBasicInfo.PropertyInfo.Address, new { htmlAttributes = new { @class = "form-control", @validationMessage = "Stað (gøta, húsanummar og býur/bygd)" } })
+                    @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.PropertyInfo.Address, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.ApplicationBasicInfo.PropertyInfo.LandRegisterNumber, htmlAttributes: new { @class = "control-label bold-label" })
+                    @Html.EditorFor(model => model.ApplicationBasicInfo.PropertyInfo.LandRegisterNumber, new { htmlAttributes = new { @class = "form-control", @validationMessage = "Matr. nr." } })
+                    @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.PropertyInfo.LandRegisterNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            @*<div class="row">
+                <div class="col-md-8">
+                    @Html.LabelFor(model => model.ApplicationBasicInfo.HasOfferAttached, htmlAttributes: new { @class = "control-label bold-label" })
+                </div>
+                <div class="col-md-4">
+                    @Html.HiddenFor(m => m.ApplicationBasicInfo.HasOfferAttached)
+                    <button class="btn btn-primary ToggleHasOfferAttached" data-value="true" type="button" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        @(Model.ApplicationBasicInfo.HasOfferAttached ? "Ja" : "Nei")
+                    </button>
+                    <button class="btn btn-default ToggleHasOfferAttached" data-value="false" type="button" data-toggle="button" aria-pressed="true" autocomplete="off">
+                        @(Model.ApplicationBasicInfo.HasOfferAttached ? "Nei" : "Ja")
+                    </button>
+                </div>
+            </div>*@
+
+            @*<div class="row" style="margin-top:50px;">
+                <div class="col-md-12">
+                    <h4>
+                        Váttan og loyvi
+                    </h4>
+                    <label class="control-label">
+                        Undirritaði váttar hervið, at omanfyri givnu upplýsingar eru rættar. Eisini gevur undirritaði metingarfólki hjá Bústøðum – Føroya bústaðafelag loyvi til at virðismeta ognina.
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.ApplicationBasicInfo.AgreementPlace, htmlAttributes: new { @class = "control-label bold-label" })
+                    @Html.EditorFor(model => model.ApplicationBasicInfo.AgreementPlace, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.AgreementPlace, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.ApplicationBasicInfo.AgreementDate, htmlAttributes: new { @class = "control-label bold-label" })
+                    @Html.EditorFor(model => model.ApplicationBasicInfo.AgreementDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.AgreementDate, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.ApplicationBasicInfo.AgreementApplicantFullName, htmlAttributes: new { @class = "control-label bold-label" })
+                    @Html.EditorFor(model => model.ApplicationBasicInfo.AgreementApplicantFullName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.AgreementApplicantFullName, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.ApplicationBasicInfo.AgreementPartnerFullName, htmlAttributes: new { @class = "control-label bold-label" })
+                    @Html.EditorFor(model => model.ApplicationBasicInfo.AgreementPartnerFullName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.AgreementPartnerFullName, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        </div>
+    </div>
+}
+
+<script>
+
+    $(function () {
+
+        //$("input[type=checkbox]").on("click", function () {
+        //    var hasAgreed = $('#HasAgreed').prop('checked');
+        //    console.log(hasAgreed);
+        //    $("input[type=submit]").prop('disabled', !hasAgreed);
+        //});
+
+        //EnableDisableToggleFor(".ToggleHasOfferAttached", "input#ApplicationBasicInfo_HasOfferAttached", function (newValue) {
+        //});
+
+        $("#PropertyInfoIsSame").click(function () {
+            var propertyInfoIsSame = $('#PropertyInfoIsSame').prop('checked');
+            if ((""+propertyInfoIsSame).toLowerCase() == "true") {
+                $("#ApplicationBasicInfo_PropertyInfo_RegisteredOwner").val($("#ApplicationBasicInfo_Person_FullName").val());
+                $("#ApplicationBasicInfo_PropertyInfo_Address").val($("#ApplicationBasicInfo_Person_Address").val());
+            } 
+            else {
+                $("#ApplicationBasicInfo_PropertyInfo_RegisteredOwner").val("");
+                $("#ApplicationBasicInfo_PropertyInfo_Address").val("");
+            }
+        });
+
+        $(".phone-number").kendoMaskedTextBox({
+            mask: "#000000000000000",
+            //rules: {
+            //    "#": /[+-]/
+            //}
+        });
+
+        $("#ApplicationBasicInfo_Person_MobilePhone").change(function () {
+            var self = $(this);
+            var value = self.val();
+            //$.ajax({
+            //    url: "/Common/ParsePhoneNumber",
+            //    type: "GET",
+            //    accept: 'application/json',
+            //    data: { 'number': value },
+            //    success: function (json) {
+            //        console.log(json);
+            //        GetCountryInfo(json.Phone.CountryCode, function (countryInfo) {
+            //            $("#ApplicationBasicInfo_Person_Country").val(countryInfo.nativeName);
+            //        });
+            //    }
+            //});
+        });
+        $("#ApplicationBasicInfo_Person_PostalCode").attr('maxlength','10').change(function () {
+            var self = $(this);
+            var value = self.val();
+
+            if (value == "0") {
+                self.val("");
+            }
+            //$.ajax({
+            //    url: "/Common/FindCity",
+            //    type: "GET",
+            //    accept: 'application/json',
+            //    data: { 'postal': value, 'countryCode': '' },
+            //    success: function (json) {
+            //        console.log(json);
+            //        $("#ApplicationBasicInfo_Person_City").val(json.City);
+            //        GetCountryInfo(json.CallingCode, function (countryInfo) {
+            //            $("#ApplicationBasicInfo_Person_Country").val(countryInfo.nativeName);
+            //            self.focus();
+            //        });
+            //    }
+            //});
+        });
+    });
+
+</script>

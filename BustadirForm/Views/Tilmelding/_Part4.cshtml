@@ -1,0 +1,44 @@
+﻿@model BustadirForm.Models.BasicFamilyInfo
+
+<div class="row">
+    <div class="col-md-12">
+        Tú ert nú vorðin limur í Bústaðir – Føroya bústaðafelag og fært keypsváttan sendandi í telduposti.
+        <br />
+        Takk fyri.
+        <br />
+        @*transaction: @ViewBag.PaymentResponseData["transaction"]*@
+        @*<br />
+        <h4>Reponse List</h4>
+        <ul>
+            @{
+                var responseList = ViewBag.PaymentResponseList as Dictionary<string, string>;
+                foreach (var item in responseList)
+                {
+                    <li>
+                        @item.Key = @item.Value
+                    </li>
+                }
+            }
+        </ul>*@
+        @*<h4>Request List</h4>
+        <ul>
+            @{
+                var requestList = ViewBag.PaymentRequestList as Dictionary<string, string>;
+                foreach (var item in requestList)
+                {
+                    <li>
+                        @item.Key = @item.Value
+                    </li>
+                }
+            }
+        </ul>*@
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $(document).on("onWizardEnd", function () {
+
+        });
+    });
+</script>

@@ -1,0 +1,968 @@
+﻿@model BustadirForm.Models.Orkulan
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Umsókn - Orkulán</title>
+
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+
+    <style type='text/css'>
+        td p {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            color: #3D3D3C;
+            margin-bottom: 3px;
+        }
+
+        p {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+
+        h1 {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            text-transform: uppercase;
+            color: #272727;
+            font-weight: normal;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        h3 {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #3D3D3C;
+            font-weight: normal;
+            font-weight: bold;
+        }
+
+        #mainContent {
+            width: 98%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid black;
+        }
+
+        table tr td table tr td {
+            padding-top: 2px;
+            padding-right: 20px;
+            vertical-align: bottom;
+            border: 1px solid black;
+        }
+
+        body table tr td {
+            border: none;
+        }
+
+        .pagebreak {
+            page-break-before: always;
+        }
+
+        .MsoNormal {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+        }
+    </style>
+</head>
+<body style='width:99%;'>
+    <div style='clear: both' />
+
+    <div class="MsoNormal">
+        <br />
+        <table style='width: 98%;'>
+            <tr>
+                <td>
+                    <h1>UMSÓKN UM LÁN TIL ORKUSPARANDI TILTAK</h1>
+                </td>
+            </tr>
+        </table>
+
+
+        <br />
+        <h3>LÁNSØKJARI</h3>
+
+        <table style='width: 98%;'>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 45%;'>
+                                <p>*Navn og eftirnavn á umsøkjara</p>
+                                <span id='nameOfApplication'>
+                                    @Model.ApplicationBasicInfo.Person.FullName
+                                </span>
+                            </td>
+                            <td style='width: 20%;'>
+                                <p>*P-tal</p>
+                                @Model.ApplicationBasicInfo.Person.SSN
+                            </td>
+                            <td style='width: 35%;'>
+                                <p>Starv</p>
+                                @Model.ApplicationBasicInfo.Person.JobTitle
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 33%;'>
+                                <p>Fartelefon</p>
+                                <span>
+                                    @Model.ApplicationBasicInfo.Person.MobilePhone
+                                </span>
+                            </td>
+                            <td style='width: 33%;'>
+                                <p>Heimatelefon</p>
+                                <span>
+                                    @Model.ApplicationBasicInfo.Person.HomePhone
+                                </span>
+                            </td>
+                            <td style='width: 33%;'>
+                                <p>Arbeiðstelefon</p>
+                                <span>
+                                    @Model.ApplicationBasicInfo.Person.WorkPhone
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 50%;'>
+                                <p>Bústaður</p>
+                                @Model.ApplicationBasicInfo.Person.Address
+                            </td>
+                            <td style='width: 50%;'>
+                                <p>Teldupostaddressa</p>
+                                @Model.ApplicationBasicInfo.Person.Email
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 15%;'>
+                                <p>Postal</p>
+                                @Model.ApplicationBasicInfo.Person.PostalCode
+                            </td>
+                            <td style='width: 45%;'>
+                                <p>Býur/bygd</p>
+                                @Model.ApplicationBasicInfo.Person.City
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>Land</p>
+                                @Model.ApplicationBasicInfo.Person.Country
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <br />
+        <br />
+        <h3>Um ognina</h3>
+
+
+        <table style='width: 98%;'>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>Navn á tinglýstum eigara av ognini</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 40%;'>
+                                @Model.ApplicationBasicInfo.PropertyInfo.RegisteredOwner
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>Stað (gøta, húsanummar og býur/bygd)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 40%;'>
+                                @Model.ApplicationBasicInfo.PropertyInfo.Address
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>Matr. nr.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 40%;'>
+                                @Model.ApplicationBasicInfo.PropertyInfo.LandRegisterNumber
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            @*@{
+                    if (@Model.HasSpecialNeeds)
+                    {
+                        <tr style='margin-bottom: 20px;'>
+                            <td style='width: 98%;'>
+                                <table style='width: 98%'>
+                                    <tr>
+                                        <td style='width: 98%'>
+                                            <p>Annar tørvur, greið frá</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style='width: 98%'>
+                                            @Model.SpecialNeedsComment
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    }
+                }*@
+        </table>
+
+        @*<br />
+            <br />
+            <h3>TILÆTLAÐ ORKUSPARANDI TILTAK</h3>
+
+
+            <table style='width: 98%;'>
+                <tr>
+                    <td>
+                        <table style='width: 98%;'>
+                            <tr>
+                                <td style='width: 60%;'>
+                                    <p>Søkt verður um lán uppá @string.Format("{0:C0}", @Model.ApplicationBasicInfo.LoanAmount)</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>*@
+
+    </div>
+
+    <p class="pagebreak MsoNormal">
+        <o:p>&nbsp;</o:p>
+        <!-- pagebreak -->
+    </p>
+
+
+    @*<br />
+        <h3>Inntøku-, ognarviðurskifti og fastar útreiðslur</h3>*@
+
+    <div class="MsoNormal">
+
+        <table style='width: 98%;'>
+            @*<tr>
+                <td>
+                    <table style='width: 98%;'>*@
+            @*<tr>
+                    <td style='width: 70%;'>
+                        <p>
+                            Navn og ársinntøkur hjá lántakara / hjúnafelaga / samánara
+                        </p>
+                    </td>
+                    <td style='width: 30%;'>
+                        <p>
+                            Ársinntøka
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='width: 70%;'>
+                        <p>
+                            <strong>@Model.ApplicationExtraInfo.IncomeLoanTaker.FullName</strong>
+                        </p>
+                    </td>
+                    <td style='width: 30%;'>
+                        <p>
+                            @string.Format("{0:C0}", @Model.ApplicationExtraInfo.IncomeLoanTaker.YearlyIncome)
+                        </p>
+                    </td>
+                </tr>*@
+            @*<tr>
+                    <td style='width: 50%;'>
+                        <p>
+                            Navn hjá lántakara <strong>@Model.ApplicationExtraInfo.IncomeLoanTaker.FullName</strong>
+                        </p>
+                    </td>
+                    <td style='width: 50%;'>
+                        <p>
+                            @string.Format("{0:C0}", @Model.ApplicationExtraInfo.IncomeLoanTaker.YearlyIncome)
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='width: 50%;'>
+                        <p>
+                            Navn hjá hjúnafelaga <strong>@Model.ApplicationExtraInfo.IncomeSpouse.FullName</strong>
+                        </p>
+                    </td>
+                    <td style='width: 50%;'>
+                        <p>
+                            @string.Format("{0:C0}", @Model.ApplicationExtraInfo.IncomeSpouse.YearlyIncome)
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='width: 50%;'>
+                        <p>
+                            Navn hjá samánara <strong>@Model.ApplicationExtraInfo.IncomePartner.FullName</strong>
+                        </p>
+                    </td>
+                    <td style='width: 50%;'>
+                        <p>
+                            @string.Format("{0:C0}", @Model.ApplicationExtraInfo.IncomePartner.YearlyIncome)
+                        </p>
+                    </td>
+                </tr>*@
+            @*</table>
+                    </td>
+                </tr>*@
+            @*<tr style="page-break-before: always">
+                    <td>&nbsp;</td>
+                </tr>*@
+            <tr>
+                <td>
+                    <h3>Inntøku-, ognarviðurskifti og fastar útreiðslur</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 45%;'>
+                                <p>
+                                    <strong>Lán í ognini</strong>
+                                </p>
+                            </td>
+                            <td style='width: 25%;'>
+                                <p>
+                                    <strong>Banki</strong>
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    <strong>Lánsupphædd</strong>
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    <strong>Mánaðargjald</strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 45%;'>
+                                <p>
+                                    1. veðrættarlán frá
+                                </p>
+                            </td>
+                            <td style='width: 25%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.MortageLoanNO1.Bank
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.MortageLoanNO1.Amount)
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.MortageLoanNO1.MontlyPayment)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 45%;'>
+                                <p>
+                                    2. veðrættarlán frá
+                                </p>
+                            </td>
+                            <td style='width: 25%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.MortageLoanNO2.Bank
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.MortageLoanNO2.Amount)
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.MortageLoanNO2.MontlyPayment)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 45%;'>
+                                <p>
+                                    3. veðrættarlán frá
+                                </p>
+                            </td>
+                            <td style='width: 25%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.MortageLoanNO3.Bank
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.MortageLoanNO3.Amount)
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.MortageLoanNO3.MontlyPayment)
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <table style='width: 98%;'>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    Ognin er tryggjað hjá
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.InsuranceCompany
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+
+        <table style='width: 98%;'>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 45%;'>
+                                <p>
+                                    <strong>Onnur lán við veð í fastari ogn, matr. nr.</strong>
+                                </p>
+                            </td>
+                            <td style='width: 25%;'>
+                                <p>
+                                    <strong>Banki</strong>
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    <strong>Lánsupphædd</strong>
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    <strong>Mánaðargjald</strong>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 45%;'>
+                                <p>
+                                    Billán
+                                </p>
+                            </td>
+                            <td style='width: 25%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.CarLoans.Bank
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.CarLoans.Amount)
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.CarLoans.MontlyPayment)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 45%;'>
+                                <p>
+                                    Bátalán
+                                </p>
+                            </td>
+                            <td style='width: 25%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.BoatLoans.Bank
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.BoatLoans.Amount)
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.BoatLoans.MontlyPayment)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 45%;'>
+                                <p>
+                                    Onnur nýtslulán
+                                </p>
+                            </td>
+                            <td style='width: 25%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.OtherExpenditureLoans.Bank
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.OtherExpenditureLoans.Amount)
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.OtherExpenditureLoans.MontlyPayment)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 45%;'>
+                                <p>
+                                    Annað
+                                </p>
+                            </td>
+                            <td style='width: 25%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.OtherLoans.Bank
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.OtherLoans.Amount)
+                                </p>
+                            </td>
+                            <td style='width: 15%;'>
+                                <p>
+                                    @string.Format("{0:C0}", @Model.ApplicationExtraInfo.OtherLoans.MontlyPayment)
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <br /><br />
+        <h3>
+            Fastar útreiðslur
+        </h3>
+
+        <table style='width: 98%;'>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureElectricity.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureElectricity.Amount
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureOil.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureOil.Amount
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditurePublicService.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditurePublicService.Amount
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureChildcare.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureChildcare.Amount
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditurePhone.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditurePhone.Amount
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureInternet.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureInternet.Amount
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureCableTV.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureCableTV.Amount
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureRoadTax.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureRoadTax.Amount
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureCarInsurane.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureCarInsurane.Amount
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureHouseInsurance.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureHouseInsurance.Amount
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureOther.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.RegularExpenditureOther.Amount
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+
+        <table style='width: 98%;'>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 98%;'>
+                                <p>
+                                    Børn undir 18 ár, ið búgva á adressuni: <strong>@Model.ApplicationExtraInfo.ChildrenLivingAtHome</strong>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        @*<br />
+            <h3>VIÐMERKINGAR</h3>
+
+            <table style='width: 98%;'>
+                <tr>
+                    <td>
+                        <table style='width: 98%;'>
+                            <tr>
+                                <td style='width: 98%;'>
+                                    <p>
+                                        @Model.ApplicationExtraInfo.Comments
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>*@
+
+    </div>
+
+    <p class="pagebreak MsoNormal">
+        <o:p>&nbsp;</o:p>
+        <!-- pagebreak -->
+    </p>
+
+
+    @*<br />
+        <h3>SUNDURGREINAÐ ORKUSPARANDI TILTAK</h3>*@
+
+    <div class="MsoNormal">
+
+        <table style='width: 98%;'>
+            @*<tr style="page-break-before: always">
+                    <td>&nbsp;</td>
+                </tr>*@
+            <tr>
+                <td>
+                    <h3>SUNDURGREINAÐ ORKUSPARANDI TILTAK</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style='width: 98%;'>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.EnergySavingMeasureNO1.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @string.Format("{0:C0}", Model.ApplicationExtraInfo.EnergySavingMeasureNO1.Amount)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.EnergySavingMeasureNO2.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @string.Format("{0:C0}", Model.ApplicationExtraInfo.EnergySavingMeasureNO2.Amount)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.EnergySavingMeasureNO3.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @string.Format("{0:C0}", Model.ApplicationExtraInfo.EnergySavingMeasureNO3.Amount)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.EnergySavingMeasureNO4.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @string.Format("{0:C0}", Model.ApplicationExtraInfo.EnergySavingMeasureNO4.Amount)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.EnergySavingMeasureNO5.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @string.Format("{0:C0}", Model.ApplicationExtraInfo.EnergySavingMeasureNO5.Amount)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.EnergySavingMeasureNO6.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @string.Format("{0:C0}", Model.ApplicationExtraInfo.EnergySavingMeasureNO6.Amount)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.EnergySavingMeasureNO7.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @string.Format("{0:C0}", Model.ApplicationExtraInfo.EnergySavingMeasureNO7.Amount)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.EnergySavingMeasureNO8.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @string.Format("{0:C0}", Model.ApplicationExtraInfo.EnergySavingMeasureNO8.Amount)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.EnergySavingMeasureNO9.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @string.Format("{0:C0}", Model.ApplicationExtraInfo.EnergySavingMeasureNO9.Amount)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    @Model.ApplicationExtraInfo.EnergySavingMeasureNO10.Description
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    @string.Format("{0:C0}", Model.ApplicationExtraInfo.EnergySavingMeasureNO10.Amount)
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='width: 60%;'>
+                                <p>
+                                    <strong>
+                                        Eg vil við hesum søkja um lán á
+                                    </strong>
+                                </p>
+                            </td>
+                            <td style='width: 40%;'>
+                                <p>
+                                    <strong>
+                                        @string.Format("{0:C0}", Model.ApplicationExtraInfo.EnergySavingMeasuresTotal)
+                                    </strong>
+                                </p>
+                            </td>
+                        </tr>
+                        @*@{
+                                foreach (var item in @Model.ApplicationExtraInfo.EnergySavingMeasures)
+                                {
+                                    <tr>
+                                        <td style='width: 60%;'>
+                                            <p>
+                                                @item.Description
+                                            </p>
+                                        </td>
+                                        <td style='width: 40%;'>
+                                            <p>
+                                                @string.Format("{0:C0}", @item.Amount)
+                                            </p>
+                                        </td>
+                                    </tr>
+                                }
+                            }*@
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

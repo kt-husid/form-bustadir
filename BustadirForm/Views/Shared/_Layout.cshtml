@@ -1,0 +1,319 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    var culture = "fo";// Kthusid.Helpers.CultureHelper.GetCurrentCulture();
+    var cultureUILowerInvariant = "fo-fo";// Kthusid.Helpers.CultureHelper.GetCurrentUICultureLowerInvariant();
+    //ViewBag.Title = BustadirForm.Models.Settings.Instance.AppName;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico" />
+    @Styles.Render("~/css/bootstrap")
+    @Styles.Render("~/Content/kendo/styles/kendocss")
+    @*@Styles.Render("~/css/bootstrap-switch")*@
+    @Styles.Render("~/css/kthusid")
+    @Scripts.Render("~/js/jquery")
+    @Scripts.Render("~/js/modernizr")
+    @*<link href='//fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>*@
+    @*@Scripts.Render("~/css/jqueryui")*@
+    @*@Styles.Render("~/css/fuelux")*@
+    @*@Styles.Render("~/css/bootstrap-datepicker")*@
+    @*@Styles.Render("~/css/editable")*@
+    @*@Styles.Render("~/css/datatable")*@
+    @RenderSection("head", required: false)
+    <style>
+        .k-tooltip-validation {
+            visibility: hidden;
+            display: none !important;
+        }
+
+        .k-invalid {
+            border: 1px solid red;
+        }
+
+        .k-file-success .k-progress{background-color:#7db425}
+
+        .k-dropzone .k-upload-status{color:#7db425}
+    </style>
+                  @*  <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-60466414-1', 'auto');
+        ga('send', 'pageview');
+    </script>*@
+          </head>
+          <body>
+              @*<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">*@
+    <div class="navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" rel="home" href='http://www.bustadir.fo' title="@BustadirForm.Models.Settings.Instance.AppName">
+                    <img class="nav-bar-image" src="~/Content/images/logo.png">
+                </a>
+                @*@Html.ActionLink(@BustadirForm.Models.Settings.Instance.AppName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+
+            <div class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav">
+                    <li><a href="http://www.bustadir.fo/#index">forsíða</a></li>
+                    <li><a href="http://www.bustadir.fo/#content1">kunning</a></li>
+                    <li><a href="http://www.bustadir.fo/#content2">bóklingar</a></li>
+                    <li><a href="http://www.bustadir.fo/#content3">limir</a></li>
+                    <li><a href="http://www.bustadir.fo/#content4">bústaðir</a></li>
+                    <li><a href="http://www.bustadir.fo/#content6">vit</a></li>
+                    <li><a href="http://www.bustadir.fo/#content6">samband</a></li>
+                    <li><a href="http://www.bustadir.fo/?q=search/node">leita</a></li>
+                    @*<li>@Html.ActionLink(@Resources.Members, "Index", "Member")</li>
+                        <li>@Html.ActionLink(@Resources.ShipsAndBoats, "Index", "Ship")</li>
+                        <li>@Html.ActionLink(@Resources.Companies, "Index", "Company")</li>
+                        <li>@Html.ActionLink(@Resources.ShippingCompanyAndEmployers, "Index", "ShippingCompany")</li>*@
+
+                    @*<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.DailyAdministrations <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            </ul>
+                        </li>*@
+
+                    @*<li>@Html.ActionLink(@Resources.Persons, "Index", "Person")</li>*@
+
+
+                    <li id="context-dropdown-menu" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <!-- shortcuts related to the current context will be added here -->
+                        </ul>
+                    </li>
+                </ul>
+                @*@Html.Partial("_LoginPartialNavbar")*@
+
+                @*<ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.Miscellaneous <span class="caret"></span></a><ul class="dropdown-menu" role="menu">
+
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@Resources.ChooseLanguage <span class="caret"></span></a>
+                            <ul id="languageSelect" class="dropdown-menu" role="menu">
+                                @{
+                                    foreach (var item in Kthusid.Helpers.CultureHelper.Instance.Cultures)
+                                    {
+                                        <li>@Html.ActionLink(@item.Value.LanguageLocal.ToUpperFirst(), "SetCulture", "Home", new { culture = @item.Key }, null)</li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                    </ul>*@
+            </div>
+        </div>
+    </div>
+    @*<div class="container body-content">*@
+    <div class="container-fluid">
+
+        <div class="row row-offcanvas row-offcanvas-left">
+
+            <div class="col-sm-0 col-md-0 sidebar-offcanvas" id="sidebar" role="navigation">
+
+                @RenderSection("SidebarMenu", false)
+
+                @*@Html.Partial("_SidebarUserInfo")*@
+            </div><!--/span-->
+
+            <div class="col-sm-12 col-md-12 main">
+
+                <!--toggle sidebar button-->
+                <p class="visible-xs">
+                    <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+                </p>
+
+                @*<h1 class="page-header">
+                        Dashboard
+                        <p class="lead">(with off-canvas sidebar)</p>
+                    </h1>*@
+                <div class="row placeholders">
+                    <div id="main">
+                        @RenderBody()
+                    </div>
+                    @*<footer>
+                            <p>@BustadirForm.Models.Settings.Instance.AppRegInfo</p>
+                        </footer>*@
+
+                    @Html.Partial("_ModalCRUDPartial")
+
+                    @Html.Partial("_ModalDebugPartial")
+
+                    <form><input type="hidden" name="preventTabClose" id="preventTabClose" /></form>
+                </div>
+            </div><!--/row-->
+        </div>
+    </div><!--/.container-->
+    @Scripts.Render("~/js/bootstrap")
+    @*@Scripts.Render("~/js/bootstrap-switch")*@
+    @*@Scripts.Render("~/js/bootstrap-datepicker")*@
+    @Scripts.Render("~/js/knockout")
+    @Scripts.Render("~/js/linq")
+    @Scripts.Render("~/js/maskedinput")
+    @*@Scripts.Render("~/js/jqueryval")*@
+    @Scripts.Render("~/js/underscore")
+    @Scripts.Render("~/js/json2")
+    @Scripts.Render("~/js/form2js")
+    @Scripts.Render("~/js/jquery-json")
+    @Scripts.Render("~/js/kthusid")
+    @Scripts.Render("~/js/bustadir")
+    @Scripts.Render("~/js/shortcuts")
+    @*@Scripts.Render("~/js/bootstrapWizard")*@
+    @*@Scripts.Render("~/js/editable")
+        @Scripts.Render("~/js/datatable")
+        @Scripts.Render("~/js/fuelux")*@
+    @Scripts.Render("~/js/kendo")
+    @Scripts.Render("~/js/moment")
+    @Scripts.Render("~/js/sammy")
+    <script src="@Url.Content("~/Content/kendo/js/cultures/kendo.culture." + culture.ToLower() + ".min.js")"></script>
+    @RenderSection("scripts", required: false)
+    @*@Scripts.Render("~/js/globalize")*@
+    <script>
+        console.log("current culture: @culture.ToLower()");
+        kendo.culture("@culture.ToLower()");
+        console.log(kendo.culture());
+        $(function () {
+            var tempForm;
+
+
+
+            //shortcut.add("Ctrl+O", function () {
+            //    alert("Hi there!");
+            //});
+
+            //$('input,textarea').keypress(function (e) {
+            //    if (e.keyCode == 13) {
+            //        $(this).nextAll('input,textarea').first().focus();
+            //        e.preventDefault();
+            //        return false;
+            //    }
+            //});
+
+            //setTimeout(function () {
+            //    $("#preventTabClose").val("don't close tab");
+            //}, 500);
+
+            //http://blog.alexmaccaw.com/jswebapps-onbeforeunload
+            //(function () {
+            //    var $ = jQuery;
+
+            //    var TRANSFORM_TYPES = ['PUT', 'POST', 'DELETE'];
+
+            //    $.activeTransforms = 0;
+
+            //    $(document).ajaxSend(function (e, xhr, settings) {
+            //        if (TRANSFORM_TYPES.indexOf(settings.type) < 0) return;
+            //        return $.activeTransforms += 1;
+            //    });
+
+            //    $(document).ajaxComplete(function (e, xhr, settings) {
+            //        if (TRANSFORM_TYPES.indexOf(settings.type) < 0) return;
+            //        return $.activeTransforms -= 1;
+            //    });
+
+            //    window.onbeforeunload || (window.onbeforeunload = function () {
+            //        if ($.activeTransforms) {
+            //            return 'There are some pending network requests which\n' +
+            //                       'means closing the page may lose unsaved data.';
+            //        }
+            //    });
+            //}).call(this);
+
+            //$(document).bind('keydown.esc', function (e) {
+            //    e.preventDefault();
+            //    //Always hide modal debug on escape key
+            //    $('#modalDebug').modal('hide');
+            //    if (tempForm && jQuery.isFunction(tempForm)) {
+            //        //validate the form inside the modalCRUD if it's not undefined and tempForm is a function
+            //        tempForm.validate();
+            //        console.log(tempForm.valid());
+
+            //        if (!tempForm.valid()) {
+            //            //$('#modalDebug').modal('hide');
+            //            $('#modalCRUD').modal('hide');
+            //        }
+            //    }
+            //    else {
+            //        $('#modalCRUD').modal('hide');
+            //        console.log("tempForm is NULL!");
+            //    }
+            //});
+
+            //$('#modalCRUD,#modalDebug').on('show.bs.modal', function () {
+            //    setModalHeight(0.95);
+            //});
+            //$('#modalCRUD,#modalDebug').on('shown.bs.modal', function (e) {
+            //    tempForm = $("#modalCRUD").find("form");
+            //    //console.log(tempForm);
+            //});
+
+            //$(document).bind('keydown.ctrl_c', function (e) {
+            //    alert("");
+            //});
+            // CTRL + H for help
+            @*$(document).bind('keydown.ctrl_h', function (e) {
+                e.preventDefault();
+                var modal = $.showModal("<h4>@Resources.Help</h4>", null, "", {
+                    keyboard: true
+                });
+                $.get("/Home/KeyboardShortcut", null, function (data) {
+                    modal.setContent(data);
+                });
+            });*@
+
+            // Hide menu bar when scrolling
+            //$(window).scroll(function () {
+            //    if ($(this).scrollTop() > 50) {
+            //        $('.navbar').fadeOut();
+            //    } else {
+            //        $('.navbar').fadeIn();
+            //    }
+            //});
+            //$.fn.editable.defaults.mode = 'inline';
+            @*if (Modernizr.inputtypes.date) {
+        $(".datefield").datepicker({
+            autoClose: true,
+            format: 'dd-mm-yyyy'
+            //language: "@culture.ToUpper()"
+        });
+    }*@
+            //$('.datefield').datepicker({
+            //})
+            //.on('changeDate', function (e) {
+            //    console.log(e);
+            //});
+
+            //moment.locale("@culture.ToUpper()");
+
+            //console.log(moment.locale);
+            @*Globalize.locale("@culture.ToUpper()");*@
+            //$("#languageSelect li").on("click", function () {
+            //    $(this).parents("form").submit(); // post form
+            //});
+            //alert($.fn.jquery);
+        });
+    </script>
+</body>
+</html>

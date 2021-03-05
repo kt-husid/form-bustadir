@@ -1,0 +1,89 @@
+﻿@model BustadirForm.Models.BasicFamilyInfo
+<div class="form-group">
+    <div class="col-md-12">
+        <p>
+            @*Treytirnar fyri limaskapi í Bústaðir – Føroya bústaðafelag eru, at tú ert fylt/ur 15 ár. Kostnaðurin fyri at koma á bíðilistan er kr 200. Umsókn um limaskap verður bert skrásett, tá kvittan fyri gjaldið fyriliggur
+            <br />
+            Hetta umsóknarblaðið er býtt sundur í tveir partar. Tann fyrra partin <strong>skalt</strong> tú svara uppá, meðan tað er sjálvboðið at svara seinna partinum.*@
+            @*Treytirnar fyri limaskapi í Bústaðir – Føroya bústaðafelag eru, at tú ert fylt/ur 15 ár. Innlimingargjaldið er kr. 200 og árligi kostnaðurin fyri limaskapi er kr. 150.*@
+        </p>
+        <p class="text-center" style="margin-top:50px;">
+            <button type="button" class="btn btn-primary dibs-payment">Víðari til gjalding</button>
+        </p>
+        <div style="min-height:500px;">
+            <!-- https://payment.architrade.com/paymentweb/start.action -->
+            <!-- https://sat1.dibspayment.com/dibspaymentwindow/entrypoint -->
+            <!-- http://tech.dibspayment.com/D2/Integrate/DPW/Hosted/input_parameters/standard -->
+
+            @*<form id="DibsPaymentForm" type="button" method="post" action="https://sat1.dibspayment.com/dibspaymentwindow/entrypoint" accept-charset="UTF-8">*@
+            <form id="DibsPaymentForm" action="https://payment.architrade.com/paymentweb/start.action" method="POST" charset="UTF-8">
+                @*<input type="hidden" name="accepturl" value="">*@
+                @*<input type="hidden" name="acceptReturnUrl" value="" />*@
+                @*<input type="hidden" name="amount" value="20000" />*@<!-- 200 DKK -->
+                @*<input type="hidden" name="currency" value="208" />*@<!-- 208 = DKK http://en.wikipedia.org/wiki/ISO_4217 -->
+                @*<input type="hidden" name="merchant" value="90151340" />*@<!-- Merchant ID -->
+                @*<input type="hidden" name="orderid" value="" />*@
+                <input type="hidden" name="billingAddress" value="@Model.CurrentAddress" />  <!-- customer info -->
+                @*<input type="hidden" name="billingAddress2" value="" />*@  <!-- customer info -->
+                <input type="hidden" name="billingEmail" value="@Model.EmailAddress" />  <!-- customer info -->
+                <input type="hidden" name="billingFirstName" value='@(!string.IsNullOrEmpty(Model.FullNameApplicant) ? Model.FullNameApplicant.Split(' ')[0] : "")' />  <!-- customer info -->
+                <input type="hidden" name="billingLastName" value='@(!string.IsNullOrEmpty(Model.FullNameApplicant) ? Model.FullNameApplicant.Split(' ')[1] : "")' />  <!-- customer info -->
+                <input type="hidden" name="billingMobile" value='@(!string.IsNullOrEmpty(Model.MobilePhone) ? Model.MobilePhone.Replace("_", "") : "")' />  <!-- customer info -->
+                <input type="hidden" name="billingPostalCode" value="@Model.PostalCode" />  <!-- customer info -->
+                <input type="hidden" name="billingPostalPlace" value="@Model.CityName" /> <!-- customer info -->
+                @*<input type="hidden" name="MAC" value="" />*@ <!-- to be calculated -->
+                @*<input type="hidden" name="oiTyPes" value="QUANTITY;UNITCODE;DESCRIPTION;ITEMID;AMOUNT;VATPERCENT" />
+            <input type="hidden" name="oiRow1" value="1;stk;Innlimingargjald;1;20000;2500" />*@
+            </form>
+            @*<div class="embed-responsive embed-responsive-16by9">
+                <iframe id="DibsPaymentWindow" class="embed-responsive-item" src=""></iframe>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $(".dibs-payment").click(function () {
+            var self = $(this);
+            self.prop('disabled', true);
+            loadDibsWindow(function () {
+                // success
+            }, function () {
+                self.prop('disabled', false);
+                alert("Tú manglar enn at útfylla kravd feltir á síðuni");
+            });
+        });
+        //calcMacAsync(function (mac) {
+        //    console.log("result: " + mac);
+        //});
+        //var MAC = calcMac($("#DibsPaymentForm").serialize());// "amount=100&currency=EUR");
+        //console.log(MAC);
+        //console.log("fa8a822950ce6c242eed9e78691b9fa3d8bd5aac1298b99d979f71bd5e5da71b");
+    });
+
+    //function calcMacAsync(callback) {
+    //    $.ajax({
+    //        url: "/Tilmelding/CalculateMac",
+    //        type: "GET",
+    //        accept: 'application/json',
+    //        data: { 'msg': $("#DibsPaymentForm").serialize() },
+    //        success: function (mac) {
+    //            callback(mac);
+    //        }
+    //    });
+    //}
+
+    //function calcMac(M) {
+    //    var K = "private hex key";
+    //    var hash = CryptoJS.HmacSHA256(M, hexDecode(K));
+    //    return CryptoJS.enc.Hex.stringify(hash);
+    //}
+
+    //function hexDecode(hex) {
+    //    var str = '';
+    //    for (var i = 0; i < hex.length; i += 2) str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+    //    return str;
+    //}
+</script>
+@*<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha256.js"></script>*@

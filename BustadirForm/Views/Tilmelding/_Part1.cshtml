@@ -1,0 +1,905 @@
+﻿@model BustadirForm.Models.BasicFamilyInfo
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "Part1" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 style="text-transform:uppercase">
+                        Hvussu er húskið samansett?
+                    </h4>
+                </div>
+            </div>
+
+            <div class="row">
+                @*<div class="col-md-12">
+                    <p>
+                        Treytirnar fyri limaskapi í Bústaðir – Føroya bústaðafelag eru, at tú ert fylt/ur 15 ár. Innlimingargjaldið er kr. 200 og árligi kostnaðurin fyri limaskapi er kr. 150.
+                    </p>
+                </div>*@
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.LabelFor(model => model.FullNameApplicant, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.FullNameApplicant, new { htmlAttributes = new { @class = "form-control", @style = "outline:none;", @validationMessage = "Navn og eftirnavn á umsøkjara" } })
+                            @Html.ValidationMessageFor(model => model.FullNameApplicant, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.SSN, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.SSN, new { htmlAttributes = new { @class = "form-control ssn-number", @validationMessage = "P-tal" } })
+                            @Html.ValidationMessageFor(model => model.SSN, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.LabelFor(model => model.FullNameOfPartner, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.FullNameOfPartner, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FullNameOfPartner, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.PartnerSSN, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.PartnerSSN, new { htmlAttributes = new { @class = "form-control ssn-number" } })
+                            @Html.ValidationMessageFor(model => model.PartnerSSN, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.MobilePhone, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.MobilePhone, new { htmlAttributes = new { @class = "phone-number", @style = "width:100%;", @validationMessage = "Fartelefon" } })
+                            @Html.ValidationMessageFor(model => model.MobilePhone, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.HomePhone, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.HomePhone, new { htmlAttributes = new { @class = "phone-number", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.HomePhone, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.WorkPhone, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.WorkPhone, new { htmlAttributes = new { @class = "phone-number", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.WorkPhone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label bold-label" })
+                            @*@Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @*<input type="email" name="EmailAddress" id="EmailAddress" data-required-msg="Teldupostaddressan er ikki røtt" data-message="Teldupostaddressan er ikki røtt" value="@Model.EmailAddress" class="form-control" />*@
+
+                            @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control", @type = "email", @validationMessage = "Teldupostur" } })
+                            @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.CurrentAddress, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.CurrentAddress, new { htmlAttributes = new { @class = "form-control", @validationMessage = "Núverandi bústaður" } })
+                            @Html.ValidationMessageFor(model => model.CurrentAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            @Html.LabelFor(model => model.PostalCode, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control", @max = 10, @validationMessage = "Postnummar" } })
+                            @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-5">
+                            @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.CityName, new { htmlAttributes = new { @class = "form-control", @validationMessage = "Býur / bygd" } })
+                            @Html.ValidationMessageFor(model => model.CityName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-5">
+                            @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", @validationMessage = "Land" } })
+                            @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="margin-top:50px;">
+                    <div class="form-group">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.ChildrenLivingHomeUnderEighteen_SSN_List, htmlAttributes: new { @class = "control-label bold-label" })
+                                </div>
+                                <div class="col-md-8">
+                                    @*@Html.HiddenFor(model => model.ChildrenLivingHomeUnderEighteen_SSN_List)*@
+                                    <input type="text" id="ChildrenLivingHomeUnderEighteen_Amount" class="numeric-positive-value" max="20" value="0" style="width:70px;" />
+                                    @*@Html.HiddenFor(model => model.ChildrenLivingHomeUnderEighteen.SSN_List)
+                                        @Html.EditorFor(model => model.ChildrenLivingHomeUnderEighteen.Amount, new { htmlAttributes = new { @class = "" } })
+                                        @Html.ValidationMessageFor(model => model.ChildrenLivingHomeUnderEighteen.Amount, "", new { @class = "text-danger" })*@
+                                </div>
+                            </div>
+                            <div class="row pull-left" id="ChildrenLivingHomeUnderEighteen_SSN_Placeholder" style="margin-left:25px;">
+                                <!--todo: fix margin (temporary solution)-->
+                                @*<div class="col-md-12">
+                                        <div id="ChildrenLivingHomeUnderEighteen_SSN_Placeholder" class="form-group">
+
+                                        </div>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*<div class="col-md-12">
+                        <div class="form-group">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @Html.LabelFor(model => model.ChildrenLivingHomeUnderEighteenNotLivingAtHomeFullTime_SSN_List, htmlAttributes: new { @class = "control-label bold-label" })
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <input type="text" id="ChildrenLivingHomeUnderEighteenNotLivingAtHomeFullTime_Amount" value="0" />
+                                    </div>
+                                    <div class="col-md-10" id="ChildrenLivingHomeUnderEighteenNotLivingAtHomeFullTime_SSN_Placeholder">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="control-label bold-label" label-bold>* Býrt tú í løtuni í einum leigubústaði hjá Bústøðum?</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="btn-group">
+                                        @Html.HiddenFor(m => m.IsRentingFromFaroeseDwellingCommunity)
+                                        <button data-value="true" class='ToggleIsRentingFromFaroeseDwellingCommunity btn @(@Model.IsRentingFromFaroeseDwellingCommunity ? "btn-primary active" : "btn-default")'>Ja</button>
+                                        <button data-value="false" class='ToggleIsRentingFromFaroeseDwellingCommunity btn @(!@Model.IsRentingFromFaroeseDwellingCommunity ? "btn-primary active" : "btn-default")'>Nei</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row FaroeseDwellingCommunityLocationArea" style='margin-top:25px; display:@(Model.IsRentingFromFaroeseDwellingCommunity ? "inline" : "none");'>
+                                <div class="col-md-4">
+                                    <label class="control-label bold-label" label-bold>* Hvar?</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div>
+                                        <input type="text" name="FaroeseDwellingCommunityLocation" id="FaroeseDwellingCommunityLocation" value="@Model.FaroeseDwellingCommunityLocation" class="form-control" validationmessage="Hvar leigar tú frá okkum?" @(Model.IsRentingFromFaroeseDwellingCommunity ? "required" : "") />
+                                        @Html.ValidationMessageFor(model => model.FaroeseDwellingCommunityLocation, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <p style="margin-top:50px;">
+                    <strong>
+                        Hvat slag av bústað søkir tú?
+                    </strong>
+                </p>
+                <div id="ApartmentTypeValues">
+                    @Html.HiddenFor(model => model.TypeOfApartment1)
+                    @Html.HiddenFor(model => model.TypeOfApartment2)
+                    @Html.HiddenFor(model => model.TypeOfApartment3)
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        
+                        <div class="btn-group toggle-type-apartment" data-toggle="buttons">
+                            <label class='btn active btn-primary' data-id="TypeOfApartment1">
+                                <input type="checkbox" autocomplete="off"> @Html.DisplayNameFor(model => model.TypeOfApartment1)
+                            </label>
+                            <label class=' btn @(Model.TypeOfApartment2 ? "active btn-primary" : "btn-default")' data-id="TypeOfApartment2">
+                                <input type="checkbox" autocomplete="off"> @Html.DisplayNameFor(model => model.TypeOfApartment2)
+                            </label>
+                            <label class='btn @(Model.TypeOfApartment3 ? "active btn-primary" : "btn-default")' data-id="TypeOfApartment3">
+                                <input type="checkbox" autocomplete="off"> @Html.DisplayNameFor(model => model.TypeOfApartment3)
+                            </label>
+                            <input type="hidden" name="HasChosenApartmentType" id="HasChosenApartmentType" value="" validationmessage="Hvat slag av bústað søkir tú?" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="HasChosenApartmentType" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="row TypeOfApartmentArea" style='margin-top:25px; display:@(Model.TypeOfApartment2 ? "inline" : "none");'>
+                            <div class="col-md-4">
+                                <label class="control-label bold-label" label-bold>Hvørji útbúgving ert tú undir?</label>
+                            </div>
+                            <div class="col-md-8">
+                                <div>
+                                    <input type="text" name="TypeOfEducation" id="TypeOfEducation" value="@Model.TypeOfEducation" class="form-control" validationmessage="Hvørji útbúgving ert tú undir?" ) />
+                                    @Html.ValidationMessageFor(model => model.TypeOfEducation, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="row" style="margin-top:50px;">
+                    <div class="col-md-12">
+                        <h4 style="text-transform:uppercase;">
+                            Hvussu ynskir húskið at búgva?
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="control-label bold-label" bold-label>
+                                    * Hvørja støðu ynskir tú at hava á bíðilistanum?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <i>
+                                    <strong>Søkjandi limir</strong> eru virknir á bíðilistanum, og móttaka bústaðatilboð. <strong>Hvílandi limir</strong> móttaka ikki tilboð um bústaðir, men betra um sína støðu á bíðilistanum (anciennitet). Hvílandi limir kunnu blíva søkjandi limir aftur við at boða okkum frá hesum.
+                                </i>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="btn-group">
+                                    @Html.HiddenFor(m => m.IsActiveMember)
+                                    <button data-value="true" class='ToggleIsActiveMember btn @(@Model.IsActiveMember.Value ? "btn-primary active" : "btn-default")'>Søkjandi limur</button>
+                                    <button data-value="false" class='ToggleIsActiveMember btn @(!@Model.IsActiveMember.Value ? "btn-primary active" : "btn-default")'>Hvílandi limur</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <p style="margin-top:50px;">
+                            <label class="control-label bold-label">
+                                * Hvar í landinum ynskir tú at búgva?
+                            </label>
+                            <br />
+                            <i>
+                                Vel eitt ella fleiri øki.
+                            </i>
+                        </p>
+
+
+                        <div class="form-group">
+                            @* <div class="col-md-1">
+                                @Html.Label("Raðfesting", htmlAttributes: new { @class = "control-label bold-label" })
+                            </div>*@
+                            <div class="col-md-9">
+                                @Html.Label("Øki", htmlAttributes: new { @class = "control-label bold-label pull-left" })
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+                        @for (int i = 0; i < Model.WishListAreas.Count; i++)
+                    {
+                        var item = @Model.WishListAreas[i];
+                            <div class="form-group wish-list-area">
+                               @* <div class="col-md-1">
+                                    @if (@item.Ranking == 1)
+                                {
+                                        @Html.Label("* " + @item.Ranking.ToString(), htmlAttributes: new { @class = "control-label bold-label", @required = "required" })
+                                }
+                                else
+                                {
+                                        @Html.Label(@item.Ranking.ToString(), htmlAttributes: new { @class = "control-label bold-label", @style = "margin-left:9px;" })
+                                }
+                                </div>*@
+                                <div class="col-md-9">
+                                    <div class="btn-group toggle-wish-list-area pull-left" data-toggle="buttons">
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="WishListAreas[@i][Name]" data-valmsg-replace="true" style="visibility: visible; display: inline-block;"></span>
+                                        int jplus1 = 0;
+                                        @for (int j = 1; j <= ViewBag.WishListAreaChoices.Count; j++)
+                                    {
+                                        var areaName = ViewBag.WishListAreaChoices[j-1];
+                                            <label class='btn @(@areaName == @item.Name ? "active btn-primary" : "btn-default")' data-wish-list-area-name='@areaName' data-wish-list-area-ranking='@j'>
+                                                <input type="checkbox" autocomplete="off"> @areaName
+                                            </label>
+                                        @*<div class="col-md-2">*@
+                                            <input type="hidden" name="WishListAreas[@j][Name]" id="WishListArea_@j" value="@item.Name" @(@i == 0 ? "required" : "") validationmessage="Raðfesting av øki" />
+                                            <input type="hidden" name="WishListAreas[@j][Ranking]" value="@j" />
+                                        @*</div>*@
+                                    }
+                                    </div>
+                                </div>
+                            </div>
+                    }
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12" style="margin-top:50px;">
+                        <div class="">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <strong>
+                                        * Hvussu nógv rúm ynskir tú?
+                                    </strong>
+                                    <br />
+                                    <i>
+                                        Eitt rúm er at rokna sum uppihaldsrúm ella sovikamar. Baðirúm og gongd er ikki at rokna sum rúm. Í eini eittrúms íbúð er sovipláss og stova/køkur alt í sama rúmi. Ein tveyrúms íbúð hevur eitt sovikamar og stovu/køk. Ein trýrúms íbúð hevur tvey sovikømur og stovu/køk o.s.fr. Vel gjarna fleiri støddir.
+                                    </i>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:25px;">
+                                <div class="col-md-12">
+                                    <div id="RoomValues">
+                                        @Html.HiddenFor(model => model.WantsOneRoom)
+                                        @Html.HiddenFor(model => model.WantsTwoRooms)
+                                        @Html.HiddenFor(model => model.WantsThreeRooms)
+                                        @Html.HiddenFor(model => model.WantsFourRooms)
+                                        @Html.HiddenFor(model => model.WantsFiveRooms)
+                                        @Html.HiddenFor(model => model.WantsSixRooms)
+                                    </div>
+                                    <div class="btn-group toggle-want-room pull-left" data-toggle="buttons">
+                                        <label class='btn @(Model.WantsOneRoom ? "active btn-primary" : "btn-default")' data-id="WantsOneRoom">
+                                            <input type="checkbox" autocomplete="off"> 1 rúm
+                                        </label>
+                                        <label class='btn @(Model.WantsTwoRooms ? "active btn-primary" : "btn-default")' data-id="WantsTwoRooms">
+                                            <input type="checkbox" autocomplete="off"> 2 rúm
+                                        </label>
+                                        <label class='btn @(Model.WantsThreeRooms ? "active btn-primary" : "btn-default")' data-id="WantsThreeRooms">
+                                            <input type="checkbox" autocomplete="off"> 3 rúm
+                                        </label>
+                                        <label class='btn @(Model.WantsFourRooms ? "active btn-primary" : "btn-default")' data-id="WantsFourRooms">
+                                            <input type="checkbox" autocomplete="off"> 4 rúm
+                                        </label>
+                                        <label class='btn @(Model.WantsFiveRooms ? "active btn-primary" : "btn-default")' data-id="WantsFiveRooms">
+                                            <input type="checkbox" autocomplete="off"> 5 rúm
+                                        </label>
+                                        <label class='btn @(Model.WantsSixRooms ? "active btn-primary" : "btn-default")' data-id="WantsSixRooms">
+                                            <input type="checkbox" autocomplete="off"> 6 rúm
+                                        </label>
+                                    </div>
+                                    <input type="hidden" name="HasChosenRoom" id="HasChosenRoom" value="" required validationmessage="Hvussu nógv rúm ynskir tú?" />
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="HasChosenRoom" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <p style="margin-top:50px;">
+                            <strong>
+                                * Í hvørji hædd ynskir tú at bústaðurin liggur?
+                            </strong>
+                        </p>
+                        @Html.HiddenFor(model => model.ApartmentHeightPlacement)
+                        <div class="btn-group" data-toggle="buttons" id="ChooseApartmentHeightPlacement">
+                            <label class='btn @(@Model.ApartmentHeightPlacement == BustadirForm.Models.EApartmentLocation.FirstStore ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentLocation.FirstStore">
+                                <input type="radio" autocomplete="off" checked="checked"> 1. hædd
+                            </label>
+                            <label class='btn @(@Model.ApartmentHeightPlacement == BustadirForm.Models.EApartmentLocation.StreetLevel ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentLocation.StreetLevel">
+                                <input type="radio" autocomplete="off" checked="checked"> Veghædd
+                            </label>
+                            <label class='btn @(@Model.ApartmentHeightPlacement == BustadirForm.Models.EApartmentLocation.SecondStore ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentLocation.SecondStore">
+                                <input type="radio" autocomplete="off" checked="checked"> 2. hædd
+                            </label>
+                            <label class='btn @(@Model.ApartmentHeightPlacement == BustadirForm.Models.EApartmentLocation.DoesntMatter ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentLocation.DoesntMatter">
+                                <input type="radio" autocomplete="off" checked="checked"> Líkamikið
+                            </label>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.ApartmentHeightPlacement, "", new { @class = "text-danger" })
+                        @*<div class="btn-group btn-toggle">
+                        <button type="button" name="ApartmentHeightPlacement" value="@BustadirForm.Models.EApartmentLocation.StreetLevel" class="btn btn-primary">Veghædd</button>
+                        <button type="button" name="ApartmentHeightPlacement" value="@BustadirForm.Models.EApartmentLocation.FirstStore" class="btn btn-primary">1. hædd</button>
+                        <button type="button" name="ApartmentHeightPlacement" value="@BustadirForm.Models.EApartmentLocation.SecondStore" class="btn btn-primary">2. hædd</button>
+                        <button type="button" name="ApartmentHeightPlacement" value="@BustadirForm.Models.EApartmentLocation.DoesntMatter" class="btn btn-primary">Líkamikið</button>
+                    </div>*@
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-top:50px;">
+                    <div class="col-md-12">
+                        <p>
+                            <strong>
+                                * Hvussu nógv ynskir tú at rinda í leigu, uttan ljós og hita?
+                            </strong>
+                            <br />
+                            Svarið hevur onga ávirkan á tey bústaðatilboð, tú fært, men verður brúkt til hagtøl.
+                        </p>
+                        <div id="ApartmentCostValues">
+                            @Html.HiddenFor(model => model.ApartmentCostWithoutLightAndHeatOption0)
+                            @Html.HiddenFor(model => model.ApartmentCostWithoutLightAndHeatOption1)
+                            @Html.HiddenFor(model => model.ApartmentCostWithoutLightAndHeatOption2)
+                            @Html.HiddenFor(model => model.ApartmentCostWithoutLightAndHeatOption3)
+                            @Html.HiddenFor(model => model.ApartmentCostWithoutLightAndHeatOption4)
+                            @Html.HiddenFor(model => model.ApartmentCostWithoutLightAndHeatOption5)
+                            @Html.HiddenFor(model => model.ApartmentCostWithoutLightAndHeatOption6)
+                        </div>
+                        <div class="btn-group toggle-apartment-cost pull-left" data-toggle="buttons">
+                            <label class='btn @(Model.ApartmentCostWithoutLightAndHeatOption0 ? "active btn-primary" : "btn-default")' data-id="ApartmentCostWithoutLightAndHeatOption0">
+                                <input type="checkbox" autocomplete="off"> @Html.DisplayNameFor(model => model.ApartmentCostWithoutLightAndHeatOption0)
+                            </label>
+                            <label class='btn @(Model.ApartmentCostWithoutLightAndHeatOption1 ? "active btn-primary" : "btn-default")' data-id="ApartmentCostWithoutLightAndHeatOption1">
+                                <input type="checkbox" autocomplete="off"> @Html.DisplayNameFor(model => model.ApartmentCostWithoutLightAndHeatOption1)
+                            </label>
+                            <label class='btn @(Model.ApartmentCostWithoutLightAndHeatOption2 ? "active btn-primary" : "btn-default")' data-id="ApartmentCostWithoutLightAndHeatOption2">
+                                <input type="checkbox" autocomplete="off"> @Html.DisplayNameFor(model => model.ApartmentCostWithoutLightAndHeatOption2)
+                            </label>
+                            <label class='btn @(Model.ApartmentCostWithoutLightAndHeatOption3 ? "active btn-primary" : "btn-default")' data-id="ApartmentCostWithoutLightAndHeatOption3">
+                                <input type="checkbox" autocomplete="off"> @Html.DisplayNameFor(model => model.ApartmentCostWithoutLightAndHeatOption3)
+                            </label>
+                            <label class='btn @(Model.ApartmentCostWithoutLightAndHeatOption4 ? "active btn-primary" : "btn-default")' data-id="ApartmentCostWithoutLightAndHeatOption4">
+                                <input type="checkbox" autocomplete="off"> @Html.DisplayNameFor(model => model.ApartmentCostWithoutLightAndHeatOption4)
+                            </label>
+                            <label class='btn @(Model.ApartmentCostWithoutLightAndHeatOption5 ? "active btn-primary" : "btn-default")' data-id="ApartmentCostWithoutLightAndHeatOption5">
+                                <input type="checkbox" autocomplete="off"> @Html.DisplayNameFor(model => model.ApartmentCostWithoutLightAndHeatOption5)
+                            </label>
+                            <label class='btn @(Model.ApartmentCostWithoutLightAndHeatOption6 ? "active btn-primary" : "btn-default")' data-id="ApartmentCostWithoutLightAndHeatOption6">
+                                <input type="checkbox" autocomplete="off"> @Html.DisplayNameFor(model => model.ApartmentCostWithoutLightAndHeatOption6)
+                            </label>
+                        </div>
+                        <input type="hidden" name="HasChosenApartmentCost" id="HasChosenApartmentCost" value="" required validationmessage="Hvussu nógv ynskir tú at rinda í leigu, uttan ljós og hita?" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="HasChosenApartmentCost" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-top:50px;">
+                    <div class="col-md-6">
+                        <label class="control-label bold-label">* Ynskir tú bústað, har loyvt er at hava húsdjór?</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="btn-group">
+                            @Html.HiddenFor(m => m.HasPet)
+                            <div class="btn-group" data-toggle="buttons" id="ChooseHasPet">
+                                <label class='btn @(@Model.HasPet == BustadirForm.Models.EHasPet.Ja ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EHasPet.Ja">
+                                    <input type="radio" autocomplete="off" checked="checked">
+                                    Ja
+                                </label>
+                                <label class='btn @(@Model.HasPet == BustadirForm.Models.EHasPet.Nei ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EHasPet.Nei">
+                                    <input type="radio" autocomplete="off" checked="checked">
+                                    Nei
+                                </label>
+                                <label class='btn @(@Model.HasPet == BustadirForm.Models.EHasPet.DoesntMatter ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EHasPet.DoesntMatter">
+                                    <input type="radio" autocomplete="off" checked="checked">
+                                    Líkamikið
+                                </label>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.HasPet, "", new { @class = "text-danger" })
+
+                            @*<button class="btn btn-primary ToggleHasPet" data-value="true" type="button" data-toggle="button" aria-pressed="false" autocomplete="off">
+                            @(Model.HasPet ? "Ja" : "Nei")
+                        </button>
+                        <button class="btn btn-default ToggleHasPet" data-value="false" type="button" data-toggle="button" aria-pressed="true" autocomplete="off">
+                            @(Model.HasPet ? "Nei" : "Ja")
+                        </button>
+                            <button data-value="true" class='ToggleHasPet btn @(@Model.HasPet ? "btn-primary active" : "btn-default")'>Ja</button>
+                            <button data-value="false" class='ToggleHasPet btn @(!@Model.HasPet ? "btn-primary active" : "btn-default")'>Nei</button>*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:50px;">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="control-label bold-label" bold-label>Hevur tú tørv á bústaði, ið er hóskandi til fólk við skerdum førleikum?</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="btn-group">
+                                            @Html.HiddenFor(m => m.HasSpecialNeeds)
+                                            @*<button class="btn btn-primary ToggleHasSpecialNeeds" data-value="true" type="button" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                            @(Model.HasSpecialNeeds ? "Ja" : "Nei")
+                                        </button>
+                                        <button class="btn btn-default ToggleHasSpecialNeeds" data-value="false" type="button" data-toggle="button" aria-pressed="true" autocomplete="off">
+                                            @(Model.HasSpecialNeeds ? "Nei" : "Ja")
+                                        </button>*@
+                                            <button data-value="true" class='ToggleHasSpecialNeeds btn @(@Model.HasSpecialNeeds ? "btn-primary active" : "btn-default")'>Ja</button>
+                                            <button data-value="false" class='ToggleHasSpecialNeeds btn @(!@Model.HasSpecialNeeds ? "btn-primary active" : "btn-default")'>Nei</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row HasSpecialNeedsArea" style='display:@(Model.HasSpecialNeeds ? "inline" : "none");'>
+                                    <div class="col-md-12">
+                                        <label class="control-label bold-label" bold-label>* Um ja, greið nærri frá her</label>
+                                    </div>
+                                </div>
+                                <div class="row HasSpecialNeedsArea" style='display:@(Model.HasSpecialNeeds ? "inline" : "none");'>
+                                    <div class="col-md-12">
+                                        <textarea id="SpecialNeedsComment" name="SpecialNeedsComment" class="form-control" rows="5" validationmessage="Tú mást greiða nærri frá tá tú hevur tørv á bústaði, ið er hóskandi til fólk við skerdum førleikum" @(Model.HasSpecialNeeds ? "required" : "")>@Model.SpecialNeedsComment</textarea>
+                                        @*@Html.TextAreaFor(model => model.SpecialNeedsComment, new { @class = "form-control", @rows = "5" })*@
+                                        @*@Html.ValidationMessageFor(model => model.SpecialNeedsComment, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label bold-label" })
+                        @*@Html.TextAreaFor(model => model.Comments, new { @class = "form-control" })*@
+                        <textarea name="Comments" class="form-control" rows="5">@Model.Comments</textarea>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:50px;">
+                    <div class="col-md-12">
+                        <p>
+                            @Html.LabelFor(model => model.HasAgreed, htmlAttributes: new { @class = "control-label bold-label" })
+                            <br />
+                            @Html.CheckBoxFor(m => m.HasAgreed, new { @value = false })
+                            @*@Html.ValidationMessageFor(model => model.HasAgreed, "", new { @class = "text-danger" })*@
+                            @*Eg vátti hervið, at eg ynski at verða limur í Bústaðir – Føroya bústaðafelag, og at omanfyri givnu upplýsingar eru rættar.*@
+                            Eg vátti hervið, at eg ynski at gerast limur hjá Bústøðum, og at omanfyri givnu upplýsingar eru rættar. Eisini gevi eg samtykki til, at Bústaðir samskiftir við meg umvegis teldupost.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+}
+
+<script>
+    var ssnList1 = [];
+    //var ssnList2 = [];
+
+    $(function () {
+        EnableDisableToggleFor(".ToggleHasPet", "input[name=HasPet]", function (newValue) {
+
+        });
+        EnableDisableToggleFor(".ToggleHasSpecialNeeds", "input[name=HasSpecialNeeds]", function (newValue) {
+            $(".HasSpecialNeedsArea").toggle();
+            $("#SpecialNeedsComment").prop('required', newValue);
+        });
+        EnableDisableToggleFor(".ToggleIsActiveMember", "input[name=IsActiveMember]", function (newValue) {
+
+        });
+
+        $(".toggle-type-apartment .btn").click(function () {
+            var self = $(this);
+            var id = self.data('id');
+            if (id == "TypeOfApartment2" || id == "TypeOfApartment3")
+            {
+                var newValue = $("#" + id).val().toLowerCase() == 'true' ? false : true;
+                $("#" + id).val(newValue);
+                self.toggleClass("btn-primary").toggleClass('active');
+                SetApartmentType();
+            }
+            if (id == "TypeOfApartment2")
+            {
+                $(".TypeOfApartmentArea").toggle().find('input').prop('required', newValue);
+            }
+        });
+
+
+        //$(".wish-list-area-active").find("input").each(function(k,v){
+        //    var input = $(v);
+        //    var id = $(v).attr('id');
+        //    //alert(id + " = " + input.val());
+        //    if (input.val().toLowerCase() == "true") {
+        //        var className = "." + id;
+        //        $(className).show().find("#" + id.replace("Active", "Ranking")).prop('required', true).data('val-required', 'Kravt');
+        //    }
+        //});
+
+        //$(".toggle-wish-list-area").find("input").each(function (k,v) {
+        //    var self = $(v);
+        //    var name = self.data('wish-list-area-name');
+        //    var ranking = self.data('wish-list-area-ranking');
+        //    $("#WishListArea_" + ranking).val(name);
+        //});
+
+        $(".toggle-wish-list-area .btn").click(function (e) {
+            var self = $(this);
+            var name = self.data('wish-list-area-name');
+            var ranking = self.data('wish-list-area-ranking');
+           
+          //  self.parent().find('.btn').removeClass("btn-primary").addClass("btn-default").removeClass('active');
+          // self.removeClass("btn-default").addClass("btn-primary").addClass('active');
+
+            //self.toggleClass("btn-primary").toggleClass('active');
+            if (self.hasClass('btn-primary'))
+            {
+                self.removeClass("btn-primary").addClass("btn-default");
+                $("#WishListArea_" + ranking).val("");
+            } else
+            {
+                self.removeClass("btn-default").addClass("btn-primary");
+                $("#WishListArea_" + ranking).val(name);
+            } 
+        });
+
+        SetRoomValues();
+        SetApartmentCostValues();
+        SetApartmentType();
+
+        $(".toggle-want-room .btn").click(function (e) {
+            var self = $(this);
+            var id = self.data('id');
+            var newValue = $("#" + id).val().toLowerCase() == 'true' ? false : true;
+            console.log(id + ": " + newValue);
+            $("#" + id).val(newValue);
+            self.toggleClass("btn-primary").toggleClass('active');
+            SetRoomValues();
+            //self.find('.btn-default').toggleClass("btn-primary").toggleClass('active');
+        });
+
+        $(".toggle-apartment-cost .btn").click(function (e) {
+            var self = $(this);
+            var id = self.data('id');
+            var newValue = $("#" + id).val().toLowerCase() == 'true' ? false : true;
+            $("#" + id).val(newValue);
+            self.toggleClass("btn-primary").toggleClass('active');
+            SetApartmentCostValues();
+        });
+
+
+
+        $("#ChooseHasPet .btn").click(function () {
+            var self = $(this);
+            var value = self.attr('id');
+            $('#HasPet').val(value);
+            self.parent().find('.btn').removeClass("btn-primary").addClass("btn-default").removeClass('active');
+            self.removeClass("btn-default").addClass("btn-primary").addClass('active');
+        });
+
+        $("#ChooseApartmentHeightPlacement .btn").click(function () {
+            var self = $(this);
+            var value = self.attr('id');
+            $('#ApartmentHeightPlacement').val(value);
+            self.parent().find('.btn').removeClass("btn-primary").addClass("btn-default").removeClass('active');
+            self.removeClass("btn-default").addClass("btn-primary").addClass('active');
+        });
+
+        //setTimeout(function () {
+        //    $("#ApartmentHeightPlacement").val("");
+        //}, 1000)
+
+        $("#ChooseApartmentCostWithoutLightAndHeat .btn").click(function () {
+            $('#ApartmentCostWithoutLightAndHeat').val($(this).text().trim());
+        });
+
+        var wishListArea = $(".wish-list-area");
+        var wishListRankingInputs = wishListArea.find("input.WishList-Ranking");
+        $(".WishList-Ranking").change(function () {
+            var thisItem = $(this);
+            var thisId = thisItem.attr("id");
+            wishListRankingInputs.each(function (k, v) {
+                var otherItem = $(this);
+                var otherId = otherItem.attr("id");
+                //console.log(thisItem.attr('id') + " = " + thisItem.val() + " <=> " + otherItem.attr('id') + " = " + otherItem.val());
+                var thisVal = parseInt(thisItem.val());
+                var otherVal = parseInt(otherItem.val());
+                //console.log(otherItem.data("kendoNumericTextBox"));
+                if (thisId != otherId && thisVal == otherVal) {
+                    var id = thisId.replace("_Ranking", "").substring(thisId.replace("_Ranking", "").length - 1); // int id of this item
+                    var id2 = otherId.replace("_Ranking", "").substring(otherId.replace("_Ranking", "").length - 1); // int id of other item
+                    console.log("swap values. id: " + id + ", id2: " + id2);
+                    var oldVal = parseInt(thisItem.data('oldVal'));
+                    oldVal = oldVal > 0 ? oldVal : 0;
+                    otherItem.data("kendoNumericTextBox").value(oldVal);
+                    var desc1 = $("#WishListArea" + id + "_CityAndBuildingName");//  "#CityAndBuildingName_" + id);WishListArea0_CityAndBuildingName
+                    var desc2 = $("#WishListArea" + id2 + "_CityAndBuildingName");//  "#CityAndBuildingName_" + id2);
+                    //alert(desc1.val() + ", desc2: " + desc2.val());
+                    var tempVal = desc1.val();
+                    desc1.val(desc2.val());
+                    desc2.val(tempVal);
+                    thisItem.data('oldVal', '0');
+                    return false;
+                }
+            });
+        })
+        .focus(function () {
+            var self = $(this);
+            //var id = self.attr('id');
+            //id = id.substring(id.length - 1);
+            self.data('oldVal', self.val());
+        });
+        setTimeout(function () {
+            wishListRankingInputs.each(function (k, v) {
+                $(this).data("kendoNumericTextBox").max('7');
+            });
+        }, 100);
+
+
+        $("input[type=checkbox]").click(function () {
+            var hasAgreed = $('#HasAgreed').prop('checked');
+            appWizard.setForwardEnabled(hasAgreed);
+        });
+
+        $("#ChooseCurrentlyLivingAt .btn").click(function () {
+            var self = $(this);
+            var value = self.attr('id');
+            $('#CurrentlyLivingAt').val(value);
+            self.parent().find('.btn').removeClass("btn-primary").addClass("btn-default").removeClass('active');
+            self.removeClass("btn-default").addClass("btn-primary").addClass('active');
+
+            if (value == "OTHER") {
+                $("#CurrentlyLivingAtOtherPlace_PlaceHolder").show();
+            }
+            else {
+                $("#CurrentlyLivingAtOtherPlace_PlaceHolder").hide();
+            }
+        });
+
+        EnableDisableToggleFor(".ToggleIsRentingFromFaroeseDwellingCommunity", "input[name=IsRentingFromFaroeseDwellingCommunity]", function (newValue) {
+            $(".FaroeseDwellingCommunityLocationArea").toggle().find('input').prop('required', newValue);
+        });
+
+        parseInputForDibsPayment();
+
+        $(".phone-number").kendoMaskedTextBox({
+            mask: "#000000000000000"
+        });
+
+        var ChildrenLivingHomeUnderEighteen_Amount = 0;
+
+        $("#ChildrenLivingHomeUnderEighteen_Amount").change(function () {
+            var self = $(this);
+            var newAmount = parseInt(self.val());
+            if (newAmount < 0 || self.val().trim().length == 0) {
+                self.val(0);
+            }
+            if (newAmount <= 20) {
+                var target = $("#ChildrenLivingHomeUnderEighteen_SSN_Placeholder");
+                var diff = newAmount - ChildrenLivingHomeUnderEighteen_Amount;
+                var from = ChildrenLivingHomeUnderEighteen_Amount;
+                var to = ChildrenLivingHomeUnderEighteen_Amount == 0 ? diff : ChildrenLivingHomeUnderEighteen_Amount + diff;
+
+                for (var i = from; i < to; i++) {
+                    var template = $("#SSN_Template").clone();
+                    var templateInput = template.show().find('input');
+                    //var templateId = "ChildrenLivingHomeUnderEighteen_SSN_List[]";//[" + i + "]
+                    templateInput.attr('id', "ChildrenLivingHomeUnderEighteen_SSN_List_" + i).attr('name', "ChildrenLivingHomeUnderEighteen_SSN_List[]");
+                    target.append(template);
+                }
+                if (diff < 0) {
+                    for (var i = from; i >= to; i--) {
+                        $("#ChildrenLivingHomeUnderEighteen_SSN_List_" + i).parent().remove();
+                    }
+                }
+                ChildrenLivingHomeUnderEighteen_Amount = newAmount;
+                applySSNRule();
+            }
+        });
+
+    });
+
+    function SetApartmentType() {
+        $("#HasChosenApartmentType").val("");
+        $("#ApartmentTypeValues").find('input').each(function (k, v) {
+            if ($(v).val().toLowerCase() == 'true') {
+                $("#HasChosenApartmentType").val("true");
+                return false;
+            }
+        });
+    }
+    function SetRoomValues() {
+        $("#HasChosenRoom").val("");
+        $("#RoomValues").find('input').each(function (k, v) {
+            if ($(v).val().toLowerCase() == 'true') {
+                $("#HasChosenRoom").val("true");
+                return false;
+            }
+        });
+    }
+
+    function SetApartmentCostValues() {
+        $("#HasChosenApartmentCost").val("");
+        $("#ApartmentCostValues").find('input').each(function (k, v) {
+            if ($(v).val().toLowerCase() == 'true') {
+                $("#HasChosenApartmentCost").val("true");
+                return false;
+            }
+        });
+    }
+
+    function parseInputForDibsPayment() {
+        $("#FullNameApplicant").blur(function () {
+            var self = $(this).val();
+            var nameSplit = self.split(" ");
+            if (nameSplit.length <= 1) {
+                //setTimeout(function () {
+                //    $("#FullNameApplicant").focus();
+                //}, 0);
+                alert("Tað er kravt at áseta navn og eftirnavn");
+                return false;
+            }
+            var firstName = "";
+            var lastName = "";
+            for (var i = 0; i < nameSplit.length - 1; i++) {
+                firstName += nameSplit[i] + " ";
+            }
+            firstName = firstName.trim();
+            if (nameSplit.length > 1) {
+                lastName = nameSplit[nameSplit.length - 1];
+            }
+            setDibsValue("billingFirstName", firstName);
+            setDibsValue("billingLastName", lastName);
+        });
+        $("#MobilePhone").change(function () {
+            var self = $(this);
+            var value = self.val();
+            setDibsValue("billingMobile", value);
+
+            //$.ajax({
+            //    url: "/Common/ParsePhoneNumber",
+            //    type: "GET",
+            //    accept: 'application/json',
+            //    data: { 'number': value },
+            //    success: function (json) {
+            //        console.log(json);
+            //        GetCountryInfo(json.Phone.CountryCode, function (countryInfo) {
+            //            $("#Country").val(countryInfo.nativeName);
+            //            //self.focus();
+            //        });
+            //    }
+            //});
+        });
+        $("#CurrentAddress").change(function () {
+            setDibsValue("billingAddress", $(this).val());
+        });
+        $("#PostalCode").change(function () {
+            var self = $(this);
+            var value = self.val();
+            setDibsValue("billingPostalCode", value);
+            //$.ajax({
+            //    url: "/Common/FindCity",
+            //    type: "GET",
+            //    accept: 'application/json',
+            //    data: { 'postal': value, 'countryCode' : '' },
+            //    success: function (json) {
+            //        console.log(json);
+            //        $("#CityName").val(json.City);
+            //        //if ($("#Country").val().trim().length == 0) {
+            //            GetCountryInfo(json.CallingCode, function (countryInfo) {
+            //                $("#Country").val(countryInfo.nativeName);
+            //                self.focus();
+            //            });
+            //        //}
+            //        //else {
+            //        //    self.focus();
+            //        //}
+            //    }
+            //});
+        });
+        $("#CityName").change(function () {
+            setDibsValue("billingPostalPlace", $(this).val().trim());
+        });
+        $("#EmailAddress").change(function () {
+ 
+            setDibsValue("billingEmail", $(this).val().trim());
+        });
+    }
+
+</script>

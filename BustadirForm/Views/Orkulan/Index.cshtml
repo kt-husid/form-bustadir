@@ -1,0 +1,407 @@
+﻿@{
+    ViewBag.Title = "Umsókn - Orkulán";
+}
+<!-- templates -->
+<div id="SSN_Template" style="display:none;">
+    <label class="control-lavel bold-label">P-tal</label>
+    <input type="text" class="form-control ssn-number" />
+</div>
+<div id="EnergySavingMeasure_Template" style="display:none;">
+    <div class="row form-group">
+        @*<div class="col-md-9">
+                <input type="text" class="form-control description" />
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="amount" style="width:100%;" />
+            </div>*@
+    </div>
+</div>
+<!-- /end templates -->
+<div id="main" class="container body-content" @*style="display:none;"*@>
+    <h1>Umsókn um lán til orkusparandi tiltak</h1>
+    <div id="wizard">
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 0%;">
+
+            </div>
+        </div>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container" id="navigation">
+                    <ul style="text-align:center;">
+                        <li style="display:inline-block;"><a class="wizard-nav-item" data-wizard-id="0" href="#/1"><span class="badge">1</span> Umsøkjari</a></li>
+                        <li style="display:inline-block;"><a class="wizard-nav-item" data-wizard-id="1" href="#/2"><span class="badge">2</span> Ognarviðurskifti og fastar útreiðslur</a></li>
+                        <li style="display:inline-block;"><a class="wizard-nav-item" data-wizard-id="2" href="#/3"><span class="badge">3</span> Verkætlanarlýsing</a></li>
+                        <li style="display:inline-block;"><a class="wizard-nav-item" data-wizard-enabled="false" data-wizard-id="3" href="#/4"><span class="badge">4</span> Liðugt</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="display:none;">
+            <div class="row">
+                <div class="col-md-12" id="errors">
+
+                </div>
+            </div>
+        </div>
+        <div class="tab-content wizard-content">
+            <div class="tab-pane" id="tab0" style="display:none;">
+                @Html.Partial("_Part1")
+            </div>
+            <div class="tab-pane" id="tab1" style="display:none;">
+                @Html.Partial("_Part2")
+            </div>
+            <div class="tab-pane" id="tab2" style="display:none;">
+                @Html.Partial("_Part3")
+            </div>
+            <div class="tab-pane" id="tab3" style="display:none;">
+                @Html.Partial("_Part4")
+            </div>
+            <div style="margin-top:25px; margin-bottom:100px;">
+                <ul style="text-align:center;" id="wizard-buttons">
+                    <li id="back" style="display:inline-block;"><a class="btn btn-default" href="#">Aftur</a></li>
+                    <li id="forward" style="display:inline-block;"><a class="btn btn-primary" href="#">Víðari</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var form = $("#Part1, #Part2, #Part3");
+    var validator;
+    var appWizard;
+    var app;
+
+    $(function () {
+        kendo.init(form);
+        //form.kendoValidator({
+        //messages: {
+        //    // defines a message for the 'custom' validation rule
+        //    //custom: "Please enter valid value for my custom rule",
+        //    validmask: "Kravt",
+
+        //    // overrides the built-in message for the required rule
+        //    required: "Kravt",
+
+        //    // overrides the built-in message for the email rule
+        //    // with a custom function that returns the actual message
+        //    email: function (input) {
+        //        return input.data("message");
+        //    }
+        //},
+        //rules: {
+        //    custom: function(input) {
+        //        if (input.is("[name=username]")) {
+        //            return input.val() === "Tom";
+        //        }
+        //        return true;
+        //    }
+        //},
+        //rules: {
+        //    validmask: function (input) {
+        //        //console.log("OK");
+        //        //console.log(input);
+        //        if (input.is("[data-validmask-msg]") && input.val() == "") {
+        //            //var maskedtextbox = input.data("kendoMaskedTextBox");
+        //            //console.log(maskedtextbox);
+        //            //return maskedtextbox.value().indexOf(maskedtextbox.options.promptChar) === -1;
+        //            return false;
+        //        }
+        //        return true;
+        //    }
+        //},
+        //errorTemplate: "<span> Manglar ella skeivt ásett </span>", //#=message#
+        //validate: function (e) {
+        //    console.log("valid" + e.valid);
+        //}
+        //});
+
+        validator = form.kendoValidator({
+            messages: {
+                minlength: function (input) {
+                    return input.data("msg");
+                },
+                required: function (input) {
+                    //return input.attr("data-val-message");
+                    //return "Kravt";
+                    var msg = input.data("msg");
+                    return msg;
+                    //return msg != "undefined" && msg != null ? msg : "kravt";
+                }
+            },
+            rules: {
+                minlength: function (input) {
+                    var min = input.data("val-minlength-min");
+                    if (min) {
+                        var maskedTextBox = input.data("kendoMaskedTextBox");
+                        if (maskedTextBox) {
+                            return parseInt(maskedTextBox.value().replace('-', '').trim().length) >= parseInt(min);
+                        }
+                        return true;
+                    }
+                    return true;
+                }
+            }
+        }).data("kendoValidator");
+
+        appWizard = new AppWizard(0, true, false, false);//hideBackOnEnd, hideForwardOnStart, hideForwardOnEnd
+
+        setTimeout(function () {
+            //validate();
+            // initialize the application
+            app = Sammy('#main', function () {
+                // define a 'route'
+                this.get('#/:id', function (context) {
+                    var id = parseInt(this.params['id']) - 1;
+                    var currentIndex = appWizard.getCurrentIndex();
+                    //alert("Id: " + id + ", currentIndex: " + currentIndex);
+                    if (id > currentIndex && id != 0) {
+                        var isValid = validator.validate();
+                        if (!isValid) {
+                            appWizard.goTo(0);
+                            app.setLocation('#/1');
+                        }
+                        appWizard.goTo(id);
+                        //app.setLocation('#/1');
+                    } else {
+                        if (currentIndex == -1) {
+                            appWizard.goTo(id);
+                            //appWizard.setForwardEnabled(false);
+                        }
+                    }
+                });
+            });
+            // start the application
+            app.run('#/1');
+
+        }, 350);
+
+        applyCurrencyRule();
+        applyNumericPositiveValueRule();
+        applySSNRule();
+
+        // Auto save form data every 15 seconds
+        var saveInterval = 15000;
+        setInterval(function () {
+            var data = FixArrayData(form.serializeArray());
+            var data2send = JSON.stringify(jQuery.param(data));
+            var url = "/Orkulan/SaveFormData";
+            $.ajax({
+                url: url,
+                type: "POST",
+                //contentType: 'application/json',
+                //dataType: "json",
+                accept: 'application/json',
+                data: data2send,
+                success: function (result) {
+                    //console.log("result: ");
+                    //console.log(result);
+                }
+            });
+        }, saveInterval);
+
+        //$(document.body).off('submit', 'form').on('submit', 'form', function (e) {
+        //    e.preventDefault();
+        //    var self = $(this);
+        //    var id = self.attr('id');
+        //    SubmitForm();
+        //    return false;
+        //});
+
+        $(".currency .energy-saving").blur(function () {
+            var self = $(this);
+            if (self.prop('required')) {
+                applyNumericValidationBorder(self);
+            }
+        });
+
+        $('form').submit(function (e) {
+            e.preventDefault();
+            var self = $(this);
+            var id = self.attr('id');
+            return false;
+        });
+
+        //var submitBtn = $('<input type="submit" value="Send umsókn" class="btn btn-primary" disabled="disabled" />');
+
+        $(document).on("onWizardNavigate", function (e) {
+            //console.log(e);
+            $("body").scrollTop(0);
+            console.log(appWizard.getCurrentIndex() + " " + e.currentIndex);
+            appWizard.setForwardText("Víðari");
+            appWizard.resetForwardAction();
+            //alert(e.currentIndex);
+            if (e.currentIndex == 2) {
+                appWizard.setForwardText("Send umsókn");
+            }
+            else if (e.currentIndex == 3) {
+                appWizard.setForwardText("Aftur til heimasíðu")
+                appWizard.setForwardAction(function () {
+                    window.location = "http://www.bustadir.fo";
+                });
+            }
+
+            //if (e.index == 2) {
+            //    submitBtn.click(function () {
+            //        //if (validate2($("#Part3"))) {
+            //        //    alert("OK");
+            //        //    SubmitForm();
+            //        //}
+            //        submitBtn.prop('disabled', true);
+            //        var isValid = validate();
+            //        if (!isValid) {
+            //            //appWizard.goTo(appWizard.getCurrentIndex() - 1);
+            //            //$(".currency .energy-saving").each(function (k, v) {
+            //            //    applyNumericValidationBorder($(v));
+            //            //});
+            //            alert("Tú manglar enn at útfylla kravd feltir á síðuni");
+            //            setTimeout(function () {
+            //                var id = parseInt(appWizard.getCurrentIndex()) + 1;
+            //                app.setLocation('#/' + id);
+            //            }, 50);
+            //        }
+            //        else {
+            //            alert("OK");
+            //            //SubmitForm();
+            //        }
+            //    });
+            //    appWizard.setForwardActive(false);
+            //    $('#wizard-buttons').append(submitBtn);
+            //}
+            //else {
+            //    appWizard.setForwardActive(true);
+            //    submitBtn.remove();
+            //}
+        });
+
+
+
+        $(document).on("onWizardBeforeNavigate", function (e) {
+            console.log("onWizardBeforeNavigate");
+
+            console.log(e);
+            if (e.currentIndex !== -1 && e.index >= e.currentIndex && e.index !== e.currentIndex) {
+                //alert(c);
+                var isValid = true;
+                var validator = $("#Part" + (parseInt(e.currentIndex) + 1)).kendoValidator({
+                    //rules: {
+                    //    validmask: function (input) {
+                    //        console.log(input);
+                    //        if (input.is("[data-validmask-msg]") && input.val() != "") {
+                    //            var maskedtextbox = input.data("kendoMaskedTextBox");
+                    //            return maskedtextbox.value().indexOf(maskedtextbox.options.promptChar) === -1;
+                    //        }
+                    //        return true;
+                    //    }
+                    //},
+                    messages: {
+                        minlength: function (input) {
+                            return input.data("msg");
+                        },
+                        required: function (input) {
+
+                            //return input.attr("data-val-message");
+                            //return "Kravt";
+                            var msg = input.data("msg");
+                            return msg;
+                            //return msg != "undefined" && msg != null ? msg : "kravt";
+                        }
+                    },
+                    rules: {
+                        minlength: function (input) {
+                            var min = input.data("val-minlength-min");
+                            if (min) {
+                                var maskedTextBox = input.data("kendoMaskedTextBox");
+                                if (maskedTextBox) {
+                                    return parseInt(maskedTextBox.value().replace('-', '').trim().length) >= parseInt(min);
+                                }
+                                return true;
+                            }
+                            return true;
+                        }
+                    }
+                }).data("kendoValidator");
+                if (validator) {
+                    isValid = validator.validate();
+                    if (!isValid) {
+                        //appWizard.goTo(appWizard.getCurrentIndex() - 1);
+                        //alert("Tú manglar enn at útfylla kravd feltir á síðuni");
+                        var errorList = "Tú manglar enn at útfylla fylgjandi feltir á síðuni:\n";
+                        console.log(validator._errors);
+                        var errors = validator.errors();
+                        $(errors).each(function (k, v) {
+                            errorList += "   * " + this + "\n";
+                            //ul.append($("<li />").text($(v).data('for') + " " + this));
+                            //console.log($(this));
+                        });
+                        alert(errorList);
+                    }
+
+                    if (e.index === 3) {
+                        var hasAgreed = $('#HasAgreed').prop('checked');
+                        if (!hasAgreed && isValid) {
+                            isValid = false;
+                            alert("Tú mást vátta fyri at koma víðari");
+                        }
+                    }
+                    if (!isValid) {
+                        setTimeout(function () {
+                            var id = parseInt(appWizard.getCurrentIndex()) + 1;
+                            app.setLocation('#/' + id);
+                        }, 50);
+                    }
+                    else {
+                        if (e.index == 3) {
+                            //alert("SubmitForm");
+                            SubmitForm();
+                        }
+                    }
+                }
+                return isValid;
+            }
+            return true;
+        });
+
+        $(document).on("onWizardEnd", function () {
+
+        });
+    });
+
+    function applyNumericValidationBorder(self) {
+        console.log(self);
+        var value = self.data("kendoNumericTextBox").value();
+        var target = self.parent(); //&.find(".k-input.k-invalid")
+        if (parseFloat(value) >= 0) {
+            target.css("border", "1px solid #ADADAD");
+        }
+        else {
+            target.css("border", "1px solid red");
+        }
+    }
+
+    function SubmitForm() {
+        //alert("form sent");
+        //return false;
+        //jQuery.ajaxSettings.traditional = false;
+        var isValid = validate();
+        console.log(isValid);
+        if (isValid) {
+            var data = FixArrayData(form.serializeArray());
+            var data2send = JSON.stringify(jQuery.param(data));
+            var url = "/Orkulan/SubmitForm";
+            $.ajax({
+                url: url,
+                type: "POST",
+                //dataType: "json",
+                //contentType: "application/json; charset=utf-8",
+                accept: 'application/json',
+                data: data2send,
+                success: function (result) {
+                    appWizard.goTo(3);
+                    console.log("result: ");
+                    console.log(result);
+                }
+            });
+        }
+    }
+</script>

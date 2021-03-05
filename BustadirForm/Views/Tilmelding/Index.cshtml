@@ -1,0 +1,387 @@
+﻿@{
+    ViewBag.Title = "Umsókn - Tilmelding";
+}
+<!-- templates -->
+<div id="SSN_Template" style="display:none;">
+    <div class="form-group">
+        <label class="control-lavel bold-label">P-tal</label>
+        <input type="text" class="form-control ssn-number" />
+    </div>
+</div>
+<!-- /end templates -->
+<div id="main" class="container body-content" @*style="display:none;"*@>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Tilmelding</h1><br>
+            <p>
+              Treytin fyri limaskapi hjá Bústøðum er, at tú ert 15 ár. 
+            </p>
+            <p>
+              Innlimingargjaldið er kr. 200,00 og árligi kostnaðurin fyri limaskapin er kr. 150,00. 
+            </p>
+            <p>
+              <i>
+                <b>Gev gætur, at um tú rindar við Mastercard ganga umleið tvær vikur til peningurin er á okkara kontu, og verður umsóknin ikki skrásett fyrr enn tá.</b>
+              </i>
+            </p>
+               @* Treytirnar fyri limaskapi í Bústaðir – Føroya bústaðafelag eru, at tú ert fylt/ur 15 ár. Innlimingargjaldið er kr. 200 og árligi kostnaðurin fyri limaskapi er kr. 150.*@
+        <br>
+        </div>
+    </div>
+    <div id="wizard">
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 0%;">
+
+            </div>
+        </div>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container" id="navigation">
+                    <ul style="text-align:center;">
+                        <li style="display:inline-block;"><a class="wizard-nav-item" data-wizard-id="0" href="#/1"><span class="badge">1</span> Kravdar upplýsingar</a></li>
+                        <li style="display:inline-block;"><a class="wizard-nav-item" data-wizard-id="1" href="#/2"><span class="badge">2</span> Sjálvbodnar upplýsingar</a></li>
+                        <li style="display:inline-block;"><a class="wizard-nav-item" data-wizard-id="2" href="#/3"><span class="badge">3</span> Gjalding</a></li>
+                        <li style="display:inline-block;"><a class="wizard-nav-item" data-wizard-enabled="false" data-wizard-id="3" href="#/4"><span class="badge">4</span> Liðugt</a></li>
+                    </ul>
+                    @*<ul>
+                            <li><a href="#tab1" data-toggle="tab"><span class="badge">1</span> Hvussu er húskið samansett</a></li>
+                            <li><a href="#tab2" data-toggle="tab"><span class="badge">2</span> Hvussu ynskir húskið at búgva</a></li>
+                            <li><a href="#tab3" data-toggle="tab"><span class="badge">3</span> Sjálvbodnar upplýsingar</a></li>
+                            <li><a href="#tab4" data-toggle="tab"><span class="badge">4</span> Gjalding</a></li>
+                            <li><a href="#tab5" data-toggle="tab"><span class="badge">5</span> Liðugt</a></li>
+                        </ul>*@
+                </div>
+            </div>
+        </div>
+        <div class="container" @*style="display:none;"*@>
+            <div class="row">
+                <div class="col-md-12" id="errors">
+
+                </div>
+            </div>
+        </div>
+        <div class="tab-content wizard-content">
+            <div class="tab-pane" id="tab0" style="display:none;">
+                @Html.Partial("_Part1")
+            </div>
+            @*<div class="tab-pane" id="tab1" style="display:none;">
+                    @Html.Partial("_Part2")
+                </div>*@
+            <div class="tab-pane" id="tab1" style="display:none;">
+                @Html.Partial("_Part2")
+            </div>
+            <div class="tab-pane" id="tab2" style="display:none;">
+                @Html.Partial("_Part3")
+            </div>
+            <div class="tab-pane" id="tab3" style="display:none;">
+                @Html.Partial("_Part4")
+            </div>
+            <div style="margin-top:25px;">
+                <ul style="text-align:center;" id="wizard-buttons">
+                    <li id="back" style="display:inline-block;"><a class="btn btn-default" href="#">Aftur</a></li>
+                    <li id="forward" style="display:inline-block;"><a class="btn btn-primary" href="#">Víðari</a></li>
+                </ul>
+            </div>
+            @*<ul class="pager wizard">
+                    <li class="previous first" style="display:none;"><a href="#">Fyrsta</a></li>
+                    <li class="previous"><a href="#">Fyrra</a></li>
+                    <li class="next last" style="display:none;"><a href="#">Síðsta</a></li>
+                    <li class="next"><a href="#">Næsta</a></li>
+                </ul>*@
+        </div>
+    </div>
+</div>
+<script>
+    var form = $("#Part1, #Part2, #Part3");
+    var validator;
+    var appWizard;
+    var app;
+
+    $(function () {
+        kendo.init(form);
+        validator = form.kendoValidator({
+            messages: {
+                minlength: function (input) {
+                    return input.data("msg");
+                },
+                required: function (input) {
+                    //return input.attr("data-val-message");
+                    //return "Kravt";
+                    var msg = input.data("msg");
+                    return msg;
+                    //return msg != "undefined" && msg != null ? msg : "kravt";
+                }
+            },
+            rules: {
+                minlength: function (input) {
+                    var min = input.data("val-minlength-min");
+                    if (min) {
+                        var maskedTextBox = input.data("kendoMaskedTextBox");
+                        if (maskedTextBox) {
+                            return parseInt(maskedTextBox.value().replace('-', '').trim().length) >= parseInt(min);
+                        }
+                        return true;
+                    }
+                    return true;
+                }
+            }
+        }).data("kendoValidator");
+        appWizard = new AppWizard(0, true, false, true);
+
+        setTimeout(function () {
+            //validate();
+            // initialize the application
+            app = Sammy('#main', function () {
+                // define a 'route'
+                this.get('#/:id', function (context) {
+                    var id = parseInt(this.params['id']) - 1;
+                    var currentIndex = appWizard.getCurrentIndex();
+                    //alert("Id: " + id + ", currentIndex: " + currentIndex);
+                    if (id > currentIndex && id != 0) {
+                        var isValid = validator.validate() && $('#HasAgreed').prop('checked');
+                        if (!isValid) {
+                            appWizard.goTo(0);
+                            app.setLocation('#/1');
+                        }
+                        // Only activate if it's allowed to skip the "HasAgreed" checkbox on the first page
+                        //appWizard.goTo(id);
+                    } else {
+                        if (currentIndex == -1) {
+                            appWizard.goTo(id);
+                            //appWizard.setForwardEnabled(false);
+                        }
+                    }
+                    //if (currentIndex == -1) {
+                    //    appWizard.goTo(id);
+                    //    //appWizard.setForwardEnabled(false);
+                    //}
+                });
+            });
+            // start the application
+            app.run('#/1');
+        }, 350);
+
+        applyCurrencyRule();
+        applyNumericPositiveValueRule();
+        applySSNRule();
+
+        // Auto save form data every 15 seconds
+        var saveInterval = 15000;
+        setInterval(function () {
+            var data = FixArrayData(form.serializeArray());
+            var data2send = JSON.stringify(jQuery.param(data));
+            var url = "/Tilmelding/SaveFormData";
+            $.ajax({
+                url: url,
+                type: "POST",
+                //contentType: 'application/json',
+                //dataType: "json",
+                accept: 'application/json',
+                data: data2send,
+                success: function (result) {
+                    //console.log("result: ");
+                    //console.log(result);
+                }
+            });
+        }, saveInterval);
+
+        $('form').submit(function (e) {
+            var self = $(this);
+            var id = self.attr('id');
+            if (id == 'DibsPaymentForm') {
+                //return true;
+                //SubmitForm();
+                e.preventDefault();
+                return false;
+            }
+            else {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        var submitBtn = $('<input type="submit" value="Send umsøkn" class="btn btn-primary" disabled="disabled" />');
+        var paymentBtn = $('<input type="button" value="Víðari til gjalding" class="btn btn-primary" />');
+        $(document).on("onWizardNavigate", function (e) {
+            //alert(e.index);
+            appWizard.setForwardActive(true);
+            if (e.index == 1) {
+                paymentBtn.remove();
+            }
+            else if (e.index == 2) {
+                //appWizard.setForwardActive(false);
+                paymentBtn.off('click').on('click', function () {
+                    var self = $(this);
+                    self.prop('disabled', true);
+                    loadDibsWindow(function () {
+                        // success
+                    }, function () {
+                        self.prop('disabled', false);
+                        alert("Tú manglar enn at útfylla kravd feltir á síðuni");
+                        setTimeout(function () {
+                            var id = parseInt(appWizard.getCurrentIndex()) + 1;
+                            app.setLocation('#/' + id);
+                        }, 50);
+                    });
+                });
+                appWizard.setForwardActive(false);
+                $('#wizard-buttons').append(paymentBtn);
+            }
+            else {
+                //appWizard.setForwardActive(true);
+                appWizard.setForwardEnabled(false);
+                paymentBtn.remove();
+            }
+
+            $("body").scrollTop(0);
+        });
+
+        $(document).on("onWizardBeforeNavigate", function (e) {
+            //console.log(e);
+            if (e.currentIndex != -1 && e.index >= e.currentIndex && e.index != e.currentIndex) {
+                var isValid = true;
+                var validator = $("#Part" + (parseInt(e.currentIndex) + 1)).kendoValidator({
+                    //rules: {
+                    //    validmask: function (input) {
+                    //        //console.log(input);
+                    //        console.log(input.data('msg'));
+                    //        if (input.is("[data-validmask-msg]") && input.val() != "") {
+                    //            var maskedtextbox = input.data("kendoMaskedTextBox");
+                    //            return maskedtextbox.value().indexOf(maskedtextbox.options.promptChar) === -1;
+                    //        }
+                    //        return true;
+                    //    }
+                    //},
+                    //messages: {
+                    //    required: function (input) {
+                    //        //var msg = input.data("msg");
+                    //        //return msg != "undefined" && msg != null ? msg : "kravt5";
+                    //        return "Kravt";
+                    //    }
+                    //}
+                    messages: {
+                        minlength: function (input) {
+                            return input.data("msg");
+                        },
+                        required: function (input) {
+                            //return input.attr("data-val-message");
+                            //return "Kravt";
+                            var msg = input.data("msg");
+                            return msg;
+                            //return msg != "undefined" && msg != null ? msg : "kravt";
+
+                        }
+                    },
+                    rules: {
+                        minlength: function (input) {
+                            var min = input.data("val-minlength-min");
+                            if (min) {
+                                var maskedTextBox = input.data("kendoMaskedTextBox");
+                                if (maskedTextBox) {
+                                    return parseInt(maskedTextBox.value().replace('-', '').trim().length) >= parseInt(min);
+                                }
+                                return true;
+                            }
+                            return true;
+                        }
+                    }
+                }).data("kendoValidator");
+                if (validator) {
+                    isValid = validator.validate();
+                    if (!isValid) {
+                        var errors = validator.errors();
+                        //var ul = $("<ul />");
+                        var errorList = "Tú manglar enn at útfylla fylgjandi feltir á síðuni:\n";
+                        $(errors).each(function (k, v) {
+                            errorList += "   * " + this + "\n";
+                            //ul.append($("<li />").text($(v).data('for') + " " + this));
+                            //console.log($(this));
+                        });
+                        alert(errorList);
+                    }
+                    var nameSplit = $("#FullNameApplicant").val().split(" ");
+                    if (nameSplit.length <= 1) {
+                        isValid = false;
+                        alert("Tað er kravt at áseta navn og eftirnavn");
+                    }
+                    var hasAgreed = $('#HasAgreed').prop('checked');
+                    if (!hasAgreed && isValid) {
+                        isValid = false;
+                        alert("Tú mást vátta fyri at koma víðari");
+                    }
+                    if (!isValid) {
+                        setTimeout(function () {
+                            var id = parseInt(appWizard.getCurrentIndex()) + 1;
+                            app.setLocation('#/' + id);
+                        }, 50);
+                    }
+                }
+                return isValid;
+            }
+            return true;
+        });
+
+        $("#AmountOfChildrenLivingHomeUnderEighteen, #AmountOfChildrenLivingHomeUnderEighteenNotLivingAtHomeFullTime").kendoNumericTextBox({
+            //format: "c",
+            decimals: 0,
+            min: 0
+        });
+    });
+
+    function setDibsValue(name, value) {
+        value = ("" + value).replace(/_/g, '').trim();
+        $("#DibsPaymentForm input[name=" + name + "]").val(value);
+    }
+
+    function loadDibsWindow(callback, callbackInvalid) {
+
+        var isValid = validate() && $('#HasAgreed').prop('checked');
+                      //alert("is form valid? " + isValid);
+                      if (isValid) {
+                      var data = FixArrayData(form.serializeArray());
+                      data.push({
+                      name: "Msg",
+                      value: $("#DibsPaymentForm").serialize()
+                      });
+                      var model = jQuery.param(data);
+                      //console.log("model");
+                      //console.log(model);
+                      var url = "/Tilmelding/MakePayment";
+                      $.ajax({
+                      url: url,
+                      type: "POST",
+                      accept: 'application/json',
+                      data: model,
+                      //data: {
+                      //    'Model': model,
+                      //    'Msg': $("#DibsPaymentForm").serialize(),
+                      //    'AcceptReturnUrl': 'http://localhost:44302/Tilmelding/Kvittan',
+                      //    'UseMac': false
+                      //},
+                      success: function (json) {
+                      //console.log(json);
+                      //console.log(url);
+                      if (json != "400") {
+                      setDibsValue("accepturl", json.AcceptUrl);
+                      setDibsValue("acceptReturnUrl", json.AcceptReturnUrl);
+                      setDibsValue("amount", json.Amount);
+                      setDibsValue("currency", json.Currency);
+                      setDibsValue("merchant", json.Merchant);
+                      setDibsValue("orderid", json.OrderId);
+                      setTimeout(function () {
+                      //console.log(json.MSG);
+                      window.location = json.MSG;
+                      //$("#DibsPaymentForm").submit();
+                      }, 0);
+                      }
+                      //$("#DibsPaymentWindow").attr('src', url);
+                      }
+                      });
+                      }
+                      else {
+                      if (callbackInvalid) {
+                      callbackInvalid();
+                      }
+                      }
+                      }
+                    </script>

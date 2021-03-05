@@ -1,0 +1,808 @@
+﻿@model BustadirForm.Models.BasicFamilyInfo
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "Part2" }))
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p style="margin-top:0px;">
+                        <strong>
+                            Hvør er hægsta útbúgvingin tú (og møguligur maki) ert liðugur við?
+                        </strong>
+                    </p>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.EducationLevel0, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.EducationLevel0.HasDiploma, new { @class = "dest-value" })
+                            @Html.HiddenFor(model => model.EducationLevel0.PartnerHasDiploma, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.EducationLevel0, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-education-level pull-left" data-toggle="buttons">
+                                <label class='btn @(Model.EducationLevel0.HasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel0_HasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Tú
+                                </label>
+                                <label class='btn @(Model.EducationLevel0.PartnerHasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel0_PartnerHasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Makin
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.EducationLevel1, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.EducationLevel1.HasDiploma, new { @class = "dest-value" })
+                            @Html.HiddenFor(model => model.EducationLevel1.PartnerHasDiploma, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.EducationLevel1, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-education-level pull-left" data-toggle="buttons">
+                                <label class='btn @(Model.EducationLevel1.HasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel1_HasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Tú
+                                </label>
+                                <label class='btn @(Model.EducationLevel1.HasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel1_PartnerHasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Makin
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.EducationLevel2, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.EducationLevel2.HasDiploma, new { @class = "dest-value" })
+                            @Html.HiddenFor(model => model.EducationLevel2.PartnerHasDiploma, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.EducationLevel2, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-education-level pull-left" data-toggle="buttons">
+                                <label class='btn @(Model.EducationLevel2.HasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel2_HasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Tú
+                                </label>
+                                <label class='btn @(Model.EducationLevel2.PartnerHasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel2_PartnerHasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Makin
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.EducationLevel3, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.EducationLevel3.HasDiploma, new { @class = "dest-value" })
+                            @Html.HiddenFor(model => model.EducationLevel3.PartnerHasDiploma, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.EducationLevel3, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-education-level pull-left" data-toggle="buttons">
+                                <label class='btn @(Model.EducationLevel3.HasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel3_HasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Tú
+                                </label>
+                                <label class='btn @(Model.EducationLevel3.PartnerHasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel3_PartnerHasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Makin
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.EducationLevel4, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.EducationLevel4.HasDiploma, new { @class = "dest-value" })
+                            @Html.HiddenFor(model => model.EducationLevel4.PartnerHasDiploma, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.EducationLevel4, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-education-level pull-left" data-toggle="buttons">
+                                <label class='btn @(Model.EducationLevel4.HasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel4_HasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Tú
+                                </label>
+                                <label class='btn @(Model.EducationLevel4.PartnerHasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel4_PartnerHasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Makin
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.EducationLevel5, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.EducationLevel5.HasDiploma, new { @class = "dest-value" })
+                            @Html.HiddenFor(model => model.EducationLevel5.PartnerHasDiploma, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.EducationLevel5, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-education-level pull-left" data-toggle="buttons">
+                                <label class='btn @(Model.EducationLevel5.HasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel5_HasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Tú
+                                </label>
+                                <label class='btn @(Model.EducationLevel5.PartnerHasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel5_PartnerHasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Makin
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.EducationLevel6, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.EducationLevel6.HasDiploma, new { @class = "dest-value" })
+                            @Html.HiddenFor(model => model.EducationLevel6.PartnerHasDiploma, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.EducationLevel6, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-education-level pull-left" data-toggle="buttons">
+                                <label class='btn @(Model.EducationLevel6.HasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel6_HasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Tú
+                                </label>
+                                <label class='btn @(Model.EducationLevel6.PartnerHasDiploma ? "active btn-primary" : "btn-default")' id="EducationLevel6_PartnerHasDiploma">
+                                    <input type="checkbox" autocomplete="off"> Makin
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                @*<div class="col-md-12">
+                        @foreach (var item in Model.EducationInfo)
+                        {
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    @item.Description
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="btn-group pull-left" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="HasDiploma_@item.Id" id="HasDiploma_@item.Id" autocomplete="off"> Tú
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="checkbox" name="PartnerHasDiploma_@item.Id" id="PartnerHasDiploma_@item.Id" autocomplete="off"> Makin
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>*@
+
+                    <div class="col-md-12">
+                        <p style="margin-top:50px;">
+                            <strong>
+                                Hvussu stór var samlaða skattaskylduga inntøkan hjá húskinum í fjør?
+                            </strong>
+                        </p>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                @Html.HiddenFor(model => model.TotalIncomeBeforeTax, new { @class = "dest-value" })
+                                @Html.ValidationMessageFor(model => model.TotalIncomeBeforeTax, "", new { @class = "text-danger" })
+                                <div class="btn-group toggle-total-income" data-toggle="buttons">
+                                    @foreach (var item in ViewBag.TotalIncomeBeforeTax)
+                                    {
+                                        <label class='btn @(@item == @Model.TotalIncomeBeforeTax ? "active btn-primary" : "btn-default")'>
+                                            <input type="radio" autocomplete="off" checked> @item
+                                        </label>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    @*<div class="row">
+                                <div class="col-md-12">
+                                @Html.HiddenFor(model => model.TotalIncomeBeforeTax)
+                                @Html.ValidationMessageFor(model => model.TotalIncomeBeforeTax, "", new { @class = "text-danger" })
+                                <div class="btn-group" data-toggle="buttons" id="ChooseTotalIncomeBeforeTax">
+                                    @foreach (var item in ViewBag.TotalIncomeBeforeTax)
+                                    {
+                                        <label class="btn btn-primary">
+                                            <input type="radio" autocomplete="off" checked> @item
+                                        </label>
+                                    }
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+
+                <div class="col-md-12">
+                    <p style="margin-top:50px;">
+                        <strong>
+                            Hvat hevur týdning fyri teg, tá tú velur bústað?
+                        </strong>
+                    </p>
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraOutdoorHouse, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraOutdoorHouse, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraOutdoorHouse, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraOutdoorHouse == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraOutdoorHouse == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraOutdoorHouse == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraWorkHouse, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraWorkHouse, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraWorkHouse, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraWorkHouse == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraWorkHouse == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraWorkHouse == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraBalcony, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraBalcony, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraBalcony, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraBalcony == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraBalcony == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraBalcony == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraOwnWashingMachine, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraOwnWashingMachine, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraOwnWashingMachine, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraOwnWashingMachine == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraOwnWashingMachine == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraOwnWashingMachine == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraNoNeighboursAboveOrBelow, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraNoNeighboursAboveOrBelow, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraNoNeighboursAboveOrBelow, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraNoNeighboursAboveOrBelow == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraNoNeighboursAboveOrBelow == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraNoNeighboursAboveOrBelow == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraGoodView, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraGoodView, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraGoodView, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraGoodView == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraGoodView == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraGoodView == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraSchoolKindergardenNearby, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraSchoolKindergardenNearby, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraSchoolKindergardenNearby, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraSchoolKindergardenNearby == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraSchoolKindergardenNearby == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraSchoolKindergardenNearby == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraIsNearCentrum, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraIsNearCentrum, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraIsNearCentrum, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraIsNearCentrum == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraIsNearCentrum == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraIsNearCentrum == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraShoppingMallNearby, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraShoppingMallNearby, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraShoppingMallNearby, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraShoppingMallNearby == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraShoppingMallNearby == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraShoppingMallNearby == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraGoodBusConnections, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraGoodBusConnections, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraGoodBusConnections, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraGoodBusConnections == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraGoodBusConnections == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraGoodBusConnections == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraFriendlyNeighbourhood, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraFriendlyNeighbourhood, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraFriendlyNeighbourhood, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraFriendlyNeighbourhood == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraFriendlyNeighbourhood == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraFriendlyNeighbourhood == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            @Html.LabelFor(model => model.ApartmentExtraFriendlyNeighbourhoodForChildren, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.HiddenFor(model => model.ApartmentExtraFriendlyNeighbourhoodForChildren, new { @class = "dest-value" })
+                            @Html.ValidationMessageFor(model => model.ApartmentExtraFriendlyNeighbourhoodForChildren, "", new { @class = "text-danger" })
+                            <div class="btn-group toggle-apartment-extra" data-toggle="buttons">
+                                <label class='btn @(@Model.ApartmentExtraFriendlyNeighbourhoodForChildren == @BustadirForm.Models.EApartmentExtraWishImportance.NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NEEDED">
+                                    <input type="radio" autocomplete="off"> Neyðugt
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraFriendlyNeighbourhoodForChildren == @BustadirForm.Models.EApartmentExtraWishImportance.WISH ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.WISH">
+                                    <input type="radio" autocomplete="off"> Ynski
+                                </label>
+                                <label class='btn @(@Model.ApartmentExtraFriendlyNeighbourhoodForChildren == @BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EApartmentExtraWishImportance.NOT_NEEDED">
+                                    <input type="radio" autocomplete="off" checked> Óneyðugt
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*@foreach (var item in Model.ApartmentExtra)
+                        {
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    @item.Description
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="ApartmentExtraImportance_@item.Id" id="@BustadirForm.Models.ApartmentExtra.EApartmentExtraWishImportance.NEEDED" autocomplete="off"> Neyðugt
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="ApartmentExtraImportance_@item.Id" id="@BustadirForm.Models.ApartmentExtra.EApartmentExtraWishImportance.WISH" autocomplete="off"> Ynski
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="ApartmentExtraImportance_@item.Id" id="@BustadirForm.Models.ApartmentExtra.EApartmentExtraWishImportance.NOT_NEEDED" autocomplete="off" checked> Óneyðugt
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        }*@
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.ApartmentExtraWishes, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.TextAreaFor(model => model.ApartmentExtraWishes, new { @class = "form-control", @rows = "3" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" style="margin-top:50px;">
+                <div class="col-md-12">
+                    <h4 style="text-transform:uppercase;">
+                        Verandi bústaður
+                    </h4>
+                </div>
+
+                <div class="col-md-12">
+                    <p>
+                        @Html.LabelFor(model => model.CurrentlyLivingAt, htmlAttributes: new { @class = "control-label bold-label" })
+                    </p>
+                    @Html.HiddenFor(model => model.CurrentlyLivingAt)
+                    @Html.ValidationMessageFor(model => model.CurrentlyLivingAt, "", new { @class = "text-danger" })
+                    <div class="btn-group" data-toggle="buttons" id="ChooseCurrentlyLivingAt">
+                        <label class='btn @(@Model.CurrentlyLivingAt == BustadirForm.Models.ECurrentLivingStatus.OWN_PLACE ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.ECurrentLivingStatus.OWN_PLACE">
+                            <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.ECurrentLivingStatus.OWN_PLACE)
+                        </label>
+                        <label class='btn @(@Model.CurrentlyLivingAt == BustadirForm.Models.ECurrentLivingStatus.APARTMENT_FOR_RENT ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.ECurrentLivingStatus.APARTMENT_FOR_RENT">
+                            <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.ECurrentLivingStatus.APARTMENT_FOR_RENT)
+                        </label>
+                        <label class='btn @(@Model.CurrentlyLivingAt == BustadirForm.Models.ECurrentLivingStatus.FAMILY_OR_FRIENDS ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.ECurrentLivingStatus.FAMILY_OR_FRIENDS">
+                            <input type="radio" autocomplete="off" checked> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.ECurrentLivingStatus.FAMILY_OR_FRIENDS)
+                        </label>
+                        <label class='btn @(@Model.CurrentlyLivingAt == BustadirForm.Models.ECurrentLivingStatus.ABROAD ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.ECurrentLivingStatus.ABROAD">
+                            <input type="radio" autocomplete="off" checked> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.ECurrentLivingStatus.ABROAD)
+                        </label>
+                        <label class='btn @(@Model.CurrentlyLivingAt == BustadirForm.Models.ECurrentLivingStatus.FOSTER_FAMILY ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.ECurrentLivingStatus.FOSTER_FAMILY">
+                            <input type="radio" autocomplete="off" checked> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.ECurrentLivingStatus.FOSTER_FAMILY)
+                        </label>
+                        <label class='btn @(@Model.CurrentlyLivingAt == BustadirForm.Models.ECurrentLivingStatus.INSTITUTION_OR_HOSPITAL ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.ECurrentLivingStatus.INSTITUTION_OR_HOSPITAL">
+                            <input type="radio" autocomplete="off" checked> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.ECurrentLivingStatus.INSTITUTION_OR_HOSPITAL)
+                        </label>
+                        <label class='btn @(@Model.CurrentlyLivingAt == BustadirForm.Models.ECurrentLivingStatus.OTHER ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.ECurrentLivingStatus.OTHER">
+                            <input type="radio" autocomplete="off" checked> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.ECurrentLivingStatus.OTHER)
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-12" style="display:none;" id="CurrentlyLivingAtOtherPlace_PlaceHolder">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.CurrentlyLivingAtOtherPlace, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.CurrentlyLivingAtOtherPlace, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" style="margin-top:50px;">
+                    <label class="control-label bold-label">
+                        Um tú leigar hús / íbúð, hvussu nógv rindar tú pr. mánað ?
+                    </label>
+                </div>
+
+                <div class="col-md-12">
+                    @*<div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.RentalCost, htmlAttributes: new { @class = "control-label bold-label" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.RentalCost, new { htmlAttributes = new { @class = "currency" } })
+                            </div>
+                        </div>*@
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.RentalCost, htmlAttributes: new { @class = "control-label bold-label" })
+                        <br />
+                        @Html.EditorFor(model => model.RentalCost, new { htmlAttributes = new { @class = "currency" } })
+                        @*@Html.ValidationMessageFor(model => model.RentalCost, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.RentalCostElectricity, htmlAttributes: new { @class = "control-label bold-label" })
+                        <br />
+                        @Html.EditorFor(model => model.RentalCostElectricity, new { htmlAttributes = new { @class = "currency" } })
+                        @*@Html.ValidationMessageFor(model => model.RentalCostElectricity, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.RentalCostOil, htmlAttributes: new { @class = "control-label bold-label" })
+                        <br />
+                        @Html.EditorFor(model => model.RentalCostOil, new { htmlAttributes = new { @class = "currency" } })
+                        @*@Html.ValidationMessageFor(model => model.RentalCostOil, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row" style="margin-top:50px;">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.ApartmentHeatingType, htmlAttributes: new { @class = "control-label bold-label" })
+                        </div>
+
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.ApartmentHeatingType, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.ApartmentHeatingType, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:50px;">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.ApartmentFloorSize, htmlAttributes: new { @class = "control-label bold-label" })
+                        </div>
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.ApartmentFloorSize, new { htmlAttributes = new { @class = "numeric-positive-value" } })
+                            <strong>m<sup>2</sup></strong>
+                            <br />
+                            @Html.ValidationMessageFor(model => model.ApartmentFloorSize, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:50px;">
+                        <div class="col-md-6">
+                            @Html.LabelFor(model => model.ApartmentRecidencePeriod, htmlAttributes: new { @class = "control-label bold-label" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApartmentRecidencePeriod.ApartmentRecidenceYears, htmlAttributes: new { @class = "control-label bold-label pull-right" })
+                            @Html.EditorFor(model => model.ApartmentRecidencePeriod.ApartmentRecidenceYears, new { htmlAttributes = new { @class = "numeric-positive-value" } })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.ApartmentRecidencePeriod.ApartmentRecidenceYears, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApartmentRecidencePeriod.ApartmentRecidenceMonths, htmlAttributes: new { @class = "control-label bold-label pull-right" })
+                            @Html.EditorFor(model => model.ApartmentRecidencePeriod.ApartmentRecidenceMonths, new { htmlAttributes = new { @class = "numeric-positive-value" } })
+                            <br />
+                            @Html.ValidationMessageFor(model => model.ApartmentRecidencePeriod.ApartmentRecidenceMonths, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" style="margin-top:50px;">
+
+                <div class="col-md-12">
+                    <h4 style="text-transform:uppercase;">
+                        Hví ynskir tú / tit annan bústað?
+                    </h4>
+                    <p>
+                        @*<i>
+                                Næstu spurningarnir eru sjálvbodnir at svara uppá, men vit heita á teg um at svara. Spurningarnir ávirka ikki tíni viðurskifti í bústaðafelagnum, men eru við til at lýsa tørvin á bústaðamarknaðinum. Upplýsingarnar verða viðgjørdir í trúnaði, og Føroya Bústaðafelag tilskilar sær rætt at brúka upplýsingarnar í hagtalsfrøðiligum samanhangi.
+                            </i>*@
+                        Hvørjar eru fremstu orsøkirnar til ynskið um annan bústað?
+                        <br />
+                        Møguligt er velja fleiri ynskir.
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    <div id="ReasonForNewApartmentValues">
+                        @{
+                                var c1 = 0;
+                                foreach (var item in ViewBag.ReasonForNewApartment)
+                                {
+                                    <input type="hidden" name="ReasonForNewApartment[@c1]" id="ReasonForNewApartment_@c1" value='@(Model.ReasonForNewApartment.Contains(item) ? item : "")' />
+                                    c1++;
+                                }
+                        }
+                    </div>
+                    <div class="btn-group toggle-reason-for-new-apartment pull-left" data-toggle="buttons">
+                        @{
+                                var c2 = 0;
+                                foreach (var item in ViewBag.ReasonForNewApartment)
+                                {
+                                    <label class='btn @(Model.ReasonForNewApartment.Contains(item)  ? "active btn-primary" : "btn-default")' data-id="ReasonForNewApartment_@c2">
+                                        <input type="checkbox" autocomplete="off"> @item
+                                    </label>
+                                    c2++;
+                                    if (@c2 % 3 == 0)
+                                    {
+                                        <br /><br />
+                                    }
+                                }
+                        }
+                    </div>
+                    @*<input type="hidden" name="HasChosenApartmentCost" id="HasChosenApartmentCost" value="" required validationmessage="Hvussu nógv ynskir tú at rinda í leigu, uttan ljós og hita?" />
+                        <span class="field-validation-valid text-danger" data-valmsg-for="HasChosenApartmentCost" data-valmsg-replace="true"></span>*@
+
+
+                    @*@Html.HiddenFor(model => model.ReasonForNewApartment)
+                        @Html.ValidationMessageFor(model => model.ReasonForNewApartment, "", new { @class = "text-danger" })
+                        <div class="btn-group" data-toggle="buttons" id="ChooseReasonForNewApartment">
+                            <label class='btn @(@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.WANT_SMALLER_PLACE ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EReasonForNewApartment.WANT_SMALLER_PLACE">
+                                <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.EReasonForNewApartment.WANT_SMALLER_PLACE)
+                            </label>
+                            <label class='btn @(@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.WANT_BIGGER_PLACE ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EReasonForNewApartment.WANT_BIGGER_PLACE">
+                                <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.EReasonForNewApartment.WANT_BIGGER_PLACE)
+                            </label>
+                            <label class='btn @(@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.WANT_LESS_MAINTENANCE ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EReasonForNewApartment.WANT_LESS_MAINTENANCE">
+                                <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.EReasonForNewApartment.WANT_LESS_MAINTENANCE)
+                            </label>
+                            <br /><br />
+                            <label class='btn @(@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.WANT_CHEAPER_PLACE ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EReasonForNewApartment.WANT_CHEAPER_PLACE">
+                                <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.EReasonForNewApartment.WANT_CHEAPER_PLACE)
+                            </label>
+                            <label class='btn @(@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.CURRENT_PLACE_IS_INSECURE ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EReasonForNewApartment.CURRENT_PLACE_IS_INSECURE">
+                                <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.EReasonForNewApartment.CURRENT_PLACE_IS_INSECURE)
+                            </label>
+                            <label class='btn @(@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.WANT_ENERGYSAVING_PLACE ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EReasonForNewApartment.WANT_ENERGYSAVING_PLACE">
+                                <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.EReasonForNewApartment.WANT_ENERGYSAVING_PLACE)
+                            </label>
+                            <br /><br />
+                            <label class='btn @(@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.WANT_OWN_PLACE ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EReasonForNewApartment.WANT_OWN_PLACE">
+                                <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.EReasonForNewApartment.WANT_OWN_PLACE)
+                            </label>
+                            <label class='btn @(@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.WANT_TO_MOVE_TO_ANOTHER_LOCATION_WITHIN_THE_COUNTRY ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EReasonForNewApartment.WANT_TO_MOVE_TO_ANOTHER_LOCATION_WITHIN_THE_COUNTRY">
+                                <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.EReasonForNewApartment.WANT_TO_MOVE_TO_ANOTHER_LOCATION_WITHIN_THE_COUNTRY)
+                            </label>
+                            <label class='btn @(@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.WANT_TO_MOVE_TO_HOME_COUNTRY ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EReasonForNewApartment.WANT_TO_MOVE_TO_HOME_COUNTRY">
+                                <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.EReasonForNewApartment.WANT_TO_MOVE_TO_HOME_COUNTRY)
+                            </label>
+                            <br /><br />
+                            <label class='btn @(@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.CHANGED_FINANCIAL_CIRCUMSTANCES ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EReasonForNewApartment.CHANGED_FINANCIAL_CIRCUMSTANCES">
+                                <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.EReasonForNewApartment.CHANGED_FINANCIAL_CIRCUMSTANCES)
+                            </label>
+                            <label class='btn @(@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.OTHER ? "active btn-primary" : "btn-default")' id="@BustadirForm.Models.EReasonForNewApartment.OTHER">
+                                <input type="radio" autocomplete="off"> @Kthusid.Enum.EnumHelper.GetDescription(@BustadirForm.Models.EReasonForNewApartment.OTHER)
+                            </label>
+                        </div>*@
+                </div>
+                <div class="col-md-12" style="display:none;" id="OtherReasonForNewApartment_PlaceHolder">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            @Html.LabelFor(model => model.OtherReasonForNewApartment, htmlAttributes: new { @class = "control-label bold-label" })
+                            @Html.EditorFor(model => model.OtherReasonForNewApartment, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+<script>
+    $(function () {
+
+        $(".toggle-total-income .btn").click(function () {
+            var self = $(this);
+            $('#TotalIncomeBeforeTax').val(self.text().trim());
+            self.parent().find('.btn').removeClass("btn-primary").addClass("btn-default").removeClass('active');
+            self.removeClass("btn-default").addClass("btn-primary").addClass('active');
+        });
+
+        $(".toggle-apartment-extra .btn").click(function (e) {
+            var self = $(this);
+            var value = self.attr('id').trim();
+            self
+                .parent('div')
+                .parent('div')
+                .find('.dest-value')
+                .val(value);
+            self.parent().find('.btn').removeClass("btn-primary").addClass("btn-default").removeClass('active');
+            self.removeClass("btn-default").addClass("btn-primary").addClass('active');
+        });
+
+        $(".toggle-education-level .btn").click(function (e) {
+            var self = $(this);
+            var target = $("#" + self.attr('id'));
+            var val = target.val().toLowerCase();
+            target.val(val === "true" ? false : true);
+            self.toggleClass("btn-primary").toggleClass('active');
+            self.find('.btn-default').toggleClass("btn-primary").toggleClass('active');
+        });
+
+        $("[name='HasAgreed']").click(function () {
+            var isChecked = $(this).is(':checked');
+            //appWizard.setForwardActive(isChecked);
+            appWizard.setForwardEnabled(isChecked);
+            //$("input[type=submit]").prop('disabled', !isChecked);
+        });
+
+        //$("#ChooseReasonForNewApartment .btn").click(function () {
+        //    var self = $(this);
+        //    var value = self.attr('id');
+        //    $('#ReasonForNewApartment').val(value);
+        //    self.parent().find('.btn').removeClass("btn-primary").addClass("btn-default").removeClass('active');
+        //    self.removeClass("btn-default").addClass("btn-primary").addClass('active');
+        //    if (value == "OTHER") {
+        //        $("#OtherReasonForNewApartment_PlaceHolder").show();
+        //    }
+        //    else {
+        //        $("#OtherReasonForNewApartment_PlaceHolder").hide();
+        //    }
+        //});
+
+        $("#ReasonForNewApartmentValues").find("input").each(function (k, v) {
+            if ($(v).val().trim().toLowerCase() == "onnur orsøk") {
+                $("#OtherReasonForNewApartment_PlaceHolder").show();
+            }
+        });
+
+        $(".toggle-reason-for-new-apartment .btn").click(function (e) {
+            var self = $(this);
+            var id = self.data('id');
+            var oldValue = $("#" + id).val().trim();
+            var newValue = self.text().trim();
+            if (oldValue.length == 0) {
+                $("#" + id).val(newValue);
+            }
+            else {
+                $("#" + id).val("");
+            }
+            self.toggleClass("btn-primary").toggleClass('active');
+
+            if (newValue.toLowerCase() == "onnur orsøk") {
+                $("#OtherReasonForNewApartment_PlaceHolder").show();
+            }
+            if (oldValue.toLowerCase() == "onnur orsøk") {
+                $("#OtherReasonForNewApartment_PlaceHolder").hide();
+            }
+        });
+
+        $("#OtherReasonForNewApartment").val("");
+    });
+</script>

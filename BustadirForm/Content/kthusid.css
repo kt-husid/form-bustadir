@@ -1,0 +1,237 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 5px;
+/*    font-family: Roboto, sans-serif;*/
+/*    font-family: Carlito, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;*/
+    font-family: Verdana, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    background-color: #fff
+}
+@font-face {
+    font-family: 'Akkopro';
+    src: url("../fonts/AkkoPro-Light.otf") format("opentype"),       
+         url("../fonts/AkkoPro-Light.ttf") format("truetype");
+    font-style: normal;
+    font-weight: lighter;
+}
+
+h1 {
+    font-family: Akkopro, Arial, sans-serif;
+    font-size: 70px;
+    margin: .67em 0;
+    color: #7aa200;
+    font-weight: 500;
+    line-height: 1.1;
+}
+h4 {
+    font-family: Akkopro, Arial, sans-serif;
+    font-size: 24px;
+    margin: .67em 0;
+    color: #7aa200;
+    font-weight: 500;
+    line-height: 1.1;
+}
+input[type=text]:focus:focus,
+textarea:focus:focus,
+select:focus:focus {
+    border-color: #7db425;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(125, 180, 37, .6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(125, 180, 37, .6)
+}
+.wizard-nav-item {
+    text-decoration: none!important;
+    padding-left: 20px;
+    padding-right: 20px
+}
+.navbar .nav>li>a {
+    -webkit-transition: all ease .3s;
+    -moz-transition: all ease .3s;
+    -o-transition: all ease .3s;
+    transition: all ease .3s
+}
+.navbar {
+    background-color: #fff
+}
+.navbar .nav>li>a:hover {
+    background-color: #7db425;
+    color: #000 /*Hans*/
+}
+.nav-bar-image {
+    max-width: 275px;
+    padding-bottom: 5px;
+    margin-top: -14px;
+    /*height: inherit*/
+}
+.form-horizontal .control-label {
+    text-align: left!important
+}
+label {
+    font-weight: 400
+}
+.bold-label {
+    font-weight: 700
+}
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
+    color: #fff;
+    background: #7db425
+}
+.bootstrap-switch .bootstrap-switch-handle-on {
+    border-bottom-left-radius: 1px;
+    border-top-left-radius: 1px
+}
+.bootstrap-switch .bootstrap-switch-handle-off {
+    border-bottom-right-radius: 1px;
+    border-top-right-radius: 1px
+}
+.red-border {
+    border: 1px solid red
+}
+.k-block,
+.k-button,
+.k-textbox,
+.k-drag-clue,
+.k-touch-scrollbar,
+.k-window,
+.k-window-titleless .k-window-content,
+.k-window-action,
+.k-inline-block,
+.k-grid .k-filter-options,
+.k-grouping-header .k-group-indicator,
+.k-autocomplete,
+.k-multiselect,
+.k-combobox,
+.k-dropdown,
+.k-dropdown-wrap,
+.k-datepicker,
+.k-timepicker,
+.k-colorpicker,
+.k-datetimepicker,
+.k-notification,
+.k-numerictextbox,
+.k-picker-wrap,
+.k-numeric-wrap,
+.k-colorpicker,
+.k-list-container,
+.k-calendar-container,
+.k-calendar td,
+.k-calendar .k-link,
+.k-treeview .k-in,
+.k-editor-inline,
+.k-tooltip,
+.k-tile,
+.k-slider-track,
+.k-slider-selection,
+.k-upload {
+    border-radius: 1px
+}
+.form-control.k-widget {
+    padding: 0
+}
+.modal .modal-header {
+    height: 50px;
+    padding: 5px;
+    padding-left: 7px
+}
+.modal .modal-body {
+    overflow-y: auto;
+    height: 100%
+}
+.modal .modal-footer {
+    height: 45px
+}
+.menu {
+    padding: 3px
+}
+.paged-area {
+    min-height: 350px
+}
+.edit-details-delete {
+    width: 250px;
+    text-align: left
+}
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%
+}
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px
+}
+.form-signin .checkbox {
+    font-weight: 400
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px
+}
+.form-signin .form-control:focus {
+    z-index: 2
+}
+.form-signin input[type=email] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0
+}
+.form-signin input[type=password] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
+}
+#grid .k-grid-toolbar {
+    padding: .6em 1.3em
+}
+.grid-create-button {
+    vertical-align: middle;
+    padding-left: .5em
+}
+.toolbar {
+    float: left
+}
+.trv-nav {
+    padding: 0
+}
+.k-item {
+    padding: 0
+}
+.k-grid-pager {
+    padding: 5px
+}
+.k-grid thead th {
+    padding: 0
+}
+.k-grid tbody td {
+    padding: 3px
+}
+.k-detail-cell .k-tabstrip .k-content {
+    padding: .2em
+}
+.grid-details ul {
+    list-style: none;
+    font-style: italic;
+    margin: 15px;
+    padding: 0
+}
+.grid-details ul li {
+    margin: 0;
+    line-height: 1.7em
+}
+.grid-details label {
+    display: inline-block;
+    width: 90px;
+    padding-right: 10px;
+    text-align: right;
+    font-style: normal;
+    font-weight: 700
+}

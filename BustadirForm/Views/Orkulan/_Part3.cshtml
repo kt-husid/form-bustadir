@@ -1,0 +1,720 @@
+﻿@model BustadirForm.Models.Orkulan
+<style>
+    .k-button.k-upload-button {
+        color: #fff;
+        background-color: #7db425;
+        border-color: #6E9F21;
+    }
+</style>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "Part3" }))
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="container">
+
+            @*<div class="row">
+                    <div class="col-md-12">
+                        <h4>
+                            Sundurgreinað orkusparandi tiltak
+                        </h4>
+                    </div>
+                </div>*@
+
+            <div class="row energy-saving-measures">
+                <div class="col-md-12">
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO1.Description, htmlAttributes: new { @class = "control-label bold-label" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO1.Amount, htmlAttributes: new { @class = "control-label bold-label" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO1.Description, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO1.Description, new { htmlAttributes = new { @class = "form-control", @required = "required", @validationMessage = "Orkusparandi tiltak - Frágreiðing (linja 1)" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO1.Description, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO1.Amount, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO1.Amount, new { htmlAttributes = new { @class = "currency energy-saving", @required = "required", @validationMessage = "Orkusparandi tiltak - Upphædd (linja 1)", @style = "width:100%;", @placeholder = "kr." } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO1.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO2.Description, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO2.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO2.Description, "", new { @class = "text-danger" })*@
+                        </div>
+                        <div class="col-md-3">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO2.Amount, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO2.Amount, new { htmlAttributes = new { @class = "currency energy-saving", @style = "width:100%;", @placeholder = "kr." } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO2.Amount, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO3.Description, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO3.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO3.Description, "", new { @class = "text-danger" })*@
+                        </div>
+                        <div class="col-md-3">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO3.Amount, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO3.Amount, new { htmlAttributes = new { @class = "currency energy-saving", @style = "width:100%;", @placeholder = "kr." } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO3.Amount, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO4.Description, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO4.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO4.Description, "", new { @class = "text-danger" })*@
+                        </div>
+                        <div class="col-md-3">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO4.Amount, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO4.Amount, new { htmlAttributes = new { @class = "currency energy-saving", @style = "width:100%;", @placeholder = "kr." } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO4.Amount, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO5.Description, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO5.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO5.Description, "", new { @class = "text-danger" })*@
+                        </div>
+                        <div class="col-md-3">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO5.Amount, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO5.Amount, new { htmlAttributes = new { @class = "currency energy-saving", @style = "width:100%;", @placeholder = "kr." } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO5.Amount, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO6.Description, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO6.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO6.Description, "", new { @class = "text-danger" })*@
+                        </div>
+                        <div class="col-md-3">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO6.Amount, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO6.Amount, new { htmlAttributes = new { @class = "currency energy-saving", @style = "width:100%;", @placeholder = "kr." } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO6.Amount, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO7.Description, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO7.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO7.Description, "", new { @class = "text-danger" })*@
+                        </div>
+                        <div class="col-md-3">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO7.Amount, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO7.Amount, new { htmlAttributes = new { @class = "currency energy-saving", @style = "width:100%;", @placeholder = "kr." } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO7.Amount, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO8.Description, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO8.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO8.Description, "", new { @class = "text-danger" })*@
+                        </div>
+                        <div class="col-md-3">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO8.Amount, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO8.Amount, new { htmlAttributes = new { @class = "currency energy-saving", @style = "width:100%;", @placeholder = "kr." } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO8.Amount, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO9.Description, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO9.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO9.Description, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO9.Amount, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO9.Amount, new { htmlAttributes = new { @class = "currency energy-saving", @style = "width:100%;", @placeholder = "kr." } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO9.Amount, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO10.Description, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO10.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO10.Description, "", new { @class = "text-danger" })*@
+                        </div>
+                        <div class="col-md-3">
+                            @*@Html.LabelFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO10.Amount, htmlAttributes: new { @class = "control-label bold-label" })*@
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO10.Amount, new { htmlAttributes = new { @class = "currency energy-saving", @style = "width:100%;", @placeholder = "kr." } })
+                            @*@Html.ValidationMessageFor(model => model.ApplicationExtraInfo.EnergySavingMeasureNO10.Amount, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationBasicInfo.LoanAmount, htmlAttributes: new { @class = "control-label bold-label" })
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" value="" id="EnergySavingSum" max="999999999999" class="currency energy-saving" readonly="readonly" style="width:100%;" placeholder="kr." />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12" style="margin-top:50px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <h4>
+                                        <strong>
+                                            Viðfest pdf-fílur (max 2 MB pr. fílu)
+                                        </strong>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="control-label">
+                                        * Kontoavrit frá TAKS yvir inntøkur hjá tær og hjúnafelaga/samánara í ár og í fjør
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="hidden" id="File1_Name" name="File1.Name" required validationmessage="Kontoavrit frá TAKS yvir inntøkur hjá tær og hjúnafelaga/samánara í ár og í fjør" />
+                                    <input type="hidden" id="File1_Extension" name="File1.Ext" />
+                                    <input type="hidden" id="File1_UID" name="File1.UID" />
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="File1_Name" data-valmsg-replace="true"></span>
+                                    @(Html.Kendo()
+                                        .Upload()
+                                        .Name("FileList1")
+                                        .HtmlAttributes(new { accept = "Application/pdf" })
+                                        .ShowFileList(true).Multiple(false)
+                                        .Events(e => e
+                                            .Upload("onUpload1")
+                                            .Success("onSuccess1")
+                                            .Select("onSelect1")
+                                            .Cancel("onCancel1")
+                                        ).Messages(m => m
+                                            .Select("Viðfest")
+                                            .Cancel("Ógilda")
+                                            .Retry("Royn aftur")
+                                            .StatusUploading("Leggur út fílu")
+                                            .StatusUploaded("Fíla er løgd út")
+                                            .Remove("Strika")
+                                            .UploadSelectedFiles("Legg út valdu fílur")
+                                            .DropFilesHere("Hála og slepp fílu/r her")
+                                            .HeaderStatusUploaded("Liðugt")
+                                            .HeaderStatusUploading("Leggur út fílu/r")
+                                            .StatusFailed("Miseydnaðist")
+                                        )
+                                        .Async(a => a
+                                            .Save("SaveFileList1", "Orkulan")
+                                            .Remove("RemoveFile", "Orkulan")
+                                            .AutoUpload(true)
+                                        ))
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="control-label">
+                                        * Seinasta ognaruppgerðin frá TAKS
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="hidden" id="File2_Name" name="File2.Name" required validationmessage="Seinasta ognaruppgerðin frá TAKS" />
+                                    <input type="hidden" id="File2_Extension" name="File2.Ext" />
+                                    <input type="hidden" id="File2_UID" name="File2.UID" />
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="File2_Name" data-valmsg-replace="true"></span>
+                                    @(Html.Kendo()
+                                        .Upload()
+                                        .Name("FileList2")
+                                        .HtmlAttributes(new { accept = "Application/pdf" })
+                                        .ShowFileList(true).Multiple(false)
+                                        .Events(e => e
+                                            .Upload("onUpload2")
+                                            .Success("onSuccess2")
+                                            .Select("onSelect2")
+                                            .Cancel("onCancel2")
+                                        ).Messages(m => m
+                                            .Select("Viðfest")
+                                            .Cancel("Ógilda")
+                                            .Retry("Royn aftur")
+                                            .StatusUploading("Leggur út fílu")
+                                            .StatusUploaded("Fíla er løgd út")
+                                            .Remove("Strika")
+                                            .UploadSelectedFiles("Legg út valdu fílur")
+                                            .DropFilesHere("Hála og slepp fílu/r her")
+                                            .HeaderStatusUploaded("Liðugt")
+                                            .HeaderStatusUploading("Leggur út fílu/r")
+                                            .StatusFailed("Miseydnaðist")
+                                        )
+                                        .Async(a => a
+                                            .Save("SaveFileList2", "Orkulan")
+                                            .Remove("RemoveFile", "Orkulan")
+                                            .AutoUpload(true)
+                                        ))
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="control-label">
+                                        * Tilboð frá veitara
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input id="fileListCount" name="fileListCount" type="hidden" required validationmessage="Tilboð frá veitara" />
+                                    <div id="fileListTemplate" style="display:none;">
+                                        <input class="file-name" type="hidden" />
+                                        <input class="file-extension" type="hidden" />
+                                        <input class="file-uid" type="hidden" />
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="" data-valmsg-replace="true"></span>
+                                    </div>
+                                    <div id="fileList4"></div>
+                                    @(Html.Kendo()
+                                        .Upload()
+                                        .Name("FileList4")
+                                        .HtmlAttributes(new { accept = "Application/pdf" })
+                                        .ShowFileList(true)
+                                        .Multiple(true)
+                                        .Events(e => e
+                                            .Upload("onUpload4")
+                                            .Success("onSuccess4")
+                                            .Select("onSelect4")
+                                            .Cancel("onCancel4")
+                                        ).Messages(m => m
+                                            .Select("Viðfest")
+                                            .Cancel("Ógilda")
+                                            .Retry("Royn aftur")
+                                            .StatusUploading("Leggur út fílu")
+                                            .StatusUploaded("Fíla er løgd út")
+                                            .Remove("Strika")
+                                            .UploadSelectedFiles("Legg út valdu fílur")
+                                            .DropFilesHere("Hála og slepp fílu/r her")
+                                            .HeaderStatusUploaded("Liðugt")
+                                            .HeaderStatusUploading("Leggur út fílu/r")
+                                            .StatusFailed("Miseydnaðist")
+                                        )
+                                        .Async(a => a
+                                            .Save("SaveFileList4", "Orkulan")
+                                            .Remove("RemoveFile", "Orkulan")
+                                            .AutoUpload(true)
+                                        ))
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="control-label">
+                                        Um tú hevur lán í peningastovni, skal heildaryvirlit viðfestast
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="hidden" id="File3_Name" name="File3.Name" />
+                                    <input type="hidden" id="File3_Extension" name="File3.Ext" />
+                                    <input type="hidden" id="File3_UID" name="File3.UID" />
+                                    @(Html.Kendo()
+                                        .Upload()
+                                        .Name("FileList3")
+                                        .HtmlAttributes(new { accept = "Application/pdf" })
+                                        .ShowFileList(true).Multiple(false)
+                                        .Events(e => e
+                                            .Upload("onUpload3")
+                                            .Success("onSuccess3")
+                                            .Select("onSelect3")
+                                            .Cancel("onCancel3")
+                                        ).Messages(m => m
+                                            .Select("Viðfest")
+                                            .Cancel("Ógilda")
+                                            .Retry("Royn aftur")
+                                            .StatusUploading("Leggur út fílu")
+                                            .StatusUploaded("Fíla er løgd út")
+                                            .Remove("Strika")
+                                            .UploadSelectedFiles("Legg út valdu fílur")
+                                            .DropFilesHere("Hála og slepp fílu/r her")
+                                            .HeaderStatusUploaded("Liðugt")
+                                            .HeaderStatusUploading("Leggur út fílu/r")
+                                            .StatusFailed("Miseydnaðist")
+                                        )
+                                        .Async(a => a
+                                            .Save("SaveFileList3", "Orkulan")
+                                            .Remove("RemoveFile", "Orkulan")
+                                            .AutoUpload(true)
+                                        ))
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    @Html.HiddenFor(model => model.ApplicationExtraInfo.AgreementDate)
+                    <div class="row" style="margin-top:50px;">
+                        <div class="col-md-12">
+                            <h4>
+                                @Html.LabelFor(model => model.HasAgreed, htmlAttributes: new { @class = "control-label bold-label" })
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label bold-label">
+                                @*<input type="checkbox" name="HasAgreed" id="HasAgreed" autocomplete="off" />*@
+                                @Html.CheckBoxFor(m => m.HasAgreed)
+                                @Html.ValidationMessageFor(model => model.HasAgreed, "", new { @class = "text-danger" })
+                                * Eg vátti hervið, at omanfyri givnu upplýsingar eru rættar. Eisini gevi eg metingarfólki hjá Bústøðum - Føroya bústaðafelag loyvi til at virðismeta ognina, og loyvi at heinta upplýsingar frá SEV og oljufeløgum um mína nýtslu seinastu fimm árini.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="row" style="margin-top:50px;">
+                <div class="col-md-12">
+                    <h4>
+                        Lánsupphædd
+                    </h4>
+                </div>
+            </div>*@
+        @*<div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.ApplicationBasicInfo.LoanAmount, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="ApplicationBasicInfo.LoanAmount" id="ApplicationBasicInfo_LoanAmount" value="50000" class="" style="width:100%;" />
+                    @Html.ValidationMessageFor(model => model.ApplicationBasicInfo.LoanAmount, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        @*<div class="row">
+                <div class="col-md-9">
+
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <button id="newEnergySavingMeasure" class="btn btn-primary">
+                            Legg nýtt tiltak aftrat
+                        </button>
+                    </div>
+                </div>
+            </div>*@
+        @*@foreach (var item in Model.ApplicationExtraInfo.EnergySavingMeasures)
+            {
+                <div class="row form-group">
+                    <div class="col-md-9">
+                        <input type="text" name="ApplicationExtraInfo.EnergySavingMeasures" id="ApplicationExtraInfo_EnergySavingMeasures" class="form-control" style="width:100%;" />
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" name="ApplicationExtraInfo.EnergySavingMeasures" id="ApplicationExtraInfo_EnergySavingMeasures" class="amount currency" style="width:100%;" />
+                    </div>
+                </div>
+            }*@
+        @*<div class="row form-group" data-bind="foreach: EnergySavingMeasures()" id="EnergySavingMeasuresArea">
+                <div class="col-md-9">
+                    <input type="text" data-bind="value: Description" class="form-control" required />
+                </div>
+                <div class="col-md-3">
+                    <input type="text" data-bind="value: Amount" class="amount currency" style="width:100%;" required />
+                </div>
+            </div>
+            <div class="row" id="EnergySavingMeasure_Placeholder">
+            </div>*@
+
+        @*<div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.ApplicationExtraInfo.AgreementPlace, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.ApplicationExtraInfo.AgreementPlace, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.AgreementPlace, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(model => model.ApplicationExtraInfo.AgreementDate, htmlAttributes: new { @class = "control-label" })
+                    <input type="text" name="ApplicationExtraInfo.AgreementDate" id="ApplicationExtraInfo_AgreementDate" value="@string.Format("{0:d}",@Model.ApplicationExtraInfo.AgreementDate)" class="form-control" disabled="disabled" />
+                    @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.AgreementDate, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+
+        @*<div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-offset-0 col-md-12">
+                        <input type="submit" value="Víðari" class="btn btn-primary" disabled="disabled" />
+                    </div>
+                </div>
+            </div>*@
+    </div>
+}
+
+<script>
+    var maxFileSize = 2 * 1024 * 1024;
+    var file1, file2, file4;
+    var filesOffer; // 1 or more
+
+    function HandleUpload(idPrefix, e) {
+        var files = e.files;
+        if (files.length > 0) {
+            var size = files[0].size;
+            //alert(size + " / " + maxFileSize);
+            if (size > maxFileSize) {
+                e.preventDefault();
+                alert("Fílan er ov stór. Vinaliga vel eina aðra ella minka um fíl-støddina.");
+            }
+            else {
+                if (files[0].extension == ".pdf") {
+                    SetFileData(idPrefix, files[0]);
+                }
+                else {
+                    e.preventDefault();
+                    alert("Bert PDF fílur eru loyvdar. Vinaliga royna umaftur.");
+                }
+            }
+        }
+    }
+    function SetFileData(idPrefix, file) {
+        var fileName = file ? file.name : "";
+        var fileExtension = file ? file.extension : "";
+        var fileUID = file ? file.uid : "";
+        $(idPrefix + "Name").val(fileName);
+        $(idPrefix + "Extension").val(fileExtension);
+        $(idPrefix + "UID").val(fileUID);
+    }
+
+    function onUpload1(e) {
+        console.log(e);
+        HandleUpload("#File1_", e);
+    }
+    function onSuccess1() {
+        //alert("file1 success");
+    }
+    function onSelect1(e) {
+        //alert("onSelect");
+        console.log(e);
+    }
+    function onCancel1(e) {
+        //alert("onCancel");
+        SetFileData("#File1_");
+    }
+
+    function onUpload2(e) {
+        console.log(e);
+        HandleUpload("#File2_", e);
+    }
+    function onSuccess2() {
+        //alert("file2 success");
+    }
+    function onSelect2(e) {
+        //alert("onSelect2");
+        console.log(e);
+    }
+    function onCancel2(e) {
+        //alert("onCancel2");
+        SetFileData("#File2_");
+    }
+
+    function onUpload3(e) {
+        console.log(e);
+        HandleUpload("#File3_", e);
+    }
+    function onSuccess3() {
+        //alert("file3 success");
+    }
+    function onSelect3(e) {
+        //alert("onSelect3");
+        console.log(e);
+    }
+    function onCancel3(e) {
+        //alert("onCancel3");
+        SetFileData("#File3_");
+    }
+
+    var fileCount = 0;
+
+    function onUpload4(e) {
+        console.log(e);
+        for (var i = 0; i < e.files.length; i++) {
+            var size = e.files[i].size;
+            if (size < maxFileSize) {
+                var id = "Files" + fileCount;
+                var name = "Files[" + fileCount + "]";
+                var templateClone = $("#fileListTemplate").clone().attr('id', "Files_" + fileCount).show();
+                templateClone.find('.file-name').attr('id', id + "Name").attr('name', name + "[Name]").val(e.files[i].name);
+                templateClone.find('.file-extension').attr('id', id + "Extension").attr('name', name + "[Extension]").val(e.files[i].extension);
+                templateClone.find('.file-uid').attr('id', id + "UID").attr('name', name + "[UID]").val(e.files[i].uid);
+                templateClone.find('.field-validation-valid').data("valmsg-for", name + "[Name]");
+                templateClone.appendTo("#fileList4");
+                //HandleUpload("#" + id + "Name", e);
+                fileCount++;
+                if (fileCount > 0) {
+                    $("#fileListCount").val(fileCount);
+                }
+                else {
+                    $("#fileListCount").val("");
+                }
+            }
+            else {
+                e.preventDefault();
+                alert("Fílan er ov stór. Vinaliga vel eina aðra ella minka um fíl-støddina.");
+            }
+        }
+    }
+    function onSuccess4() {
+        //alert("file4 success");
+    }
+    function onSelect4(e) {
+        //alert("onSelect4");
+        console.log(e);
+    }
+    function onCancel4(e) {
+        //alert("onCancel4");
+        SetFileData("#File4_");
+    }
+
+    //var energySavingMeasureVM;
+    $(function () {
+        // Notice that the Name() of the Upload is used to get its client-side instance
+        var upload1 = $("#FileList1").data("kendoUpload");
+        var upload2 = $("#File2").data("kendoUpload");
+        var upload3 = $("#File3").data("kendoUpload");
+        var upload4 = $("#File4").data("kendoUpload");
+        console.log("upload1:");
+        console.log(upload1);
+        //$("#FileList1").kendoUpload({
+        //    multiple: false,
+        //    async: {
+        //        autoUpload: false
+        //    },
+        //    localization: {
+        //        select: 'Viðfest',
+        //        remove: '',
+        //        cancel: ''
+        //    }
+        //});
+
+        $("#File2").kendoUpload({
+            multiple: false,
+            async: {
+                autoUpload: false
+            },
+            localization: {
+                select: 'Viðfest',
+                remove: '',
+                cancel: ''
+            }
+        });
+        $("#File3").kendoUpload({
+            multiple: true,
+            localization: {
+                select: 'Viðfest',
+                remove: '',
+                cancel: ''
+            }
+        });
+        $("#File4").kendoUpload({
+            multiple: false,
+            localization: {
+                select: 'Viðfest',
+                remove: '',
+                cancel: ''
+            }
+        });
+
+        @*energySavingMeasureVM = {
+            EnergySavingMeasures: ko.observableArray([])
+        }
+
+        var energySavingMeasuresJS = JSON.parse("@Html.Raw(HttpUtility.JavaScriptStringEncode(@Newtonsoft.Json.JsonConvert.SerializeObject(Model.EnergySavingMeasures)))");
+        //console.log(energySavingMeasuresJS);
+        ko.mapping.fromJS(energySavingMeasuresJS, {}, energySavingMeasureVM.EnergySavingMeasures);
+        //console.log(energySavingMeasureVM.EnergySavingMeasures());
+        //setTimeout(function () {
+        //    energySavingMeasureVM.EnergySavingMeasures()[0].Amount(42);
+        //},5000);
+        $("#newEnergySavingMeasure").click(function (e) {
+            e.preventDefault();
+            var energySavingMeasureCount = _.size(energySavingMeasureVM.EnergySavingMeasures());
+            var target = $("#EnergySavingMeasure_Placeholder");
+            var id = 'EnergySavingMeasure_' + energySavingMeasureCount;
+            $("#EnergySavingMeasure_Template").clone().attr('id', id).appendTo(target);
+            $("#" + id).show();
+            //var idDesc = "ApplicationExtraInfo_EnergySavingMeasure_Description_" + energySavingMeasureCount;
+            ////var nameDesc = "ApplicationExtraInfo.EnergySavingMeasure.Description." + energySavingMeasureCount;
+            var idAmount = "ApplicationExtraInfo_EnergySavingMeasure_Amount_" + energySavingMeasureCount;
+            ////var nameAmount = "ApplicationExtraInfo.EnergySavingMeasure.Amount." + energySavingMeasureCount;
+            //template.find('.description').attr('id', idDesc);//.attr('name', nameDesc);
+            //console.log(template.find('.amount'));
+            $("#" + id).find('.amount').addClass('currency').attr('id', idAmount).kendoNumericTextBox({//.attr('name', nameAmount)
+                format: "c",
+                decimals: 0,
+                min: 0,
+                max: 99999999
+            });
+            energySavingMeasureVM.EnergySavingMeasures.push({
+                Description: ko.observable(),
+                Amount: ko.observable()
+            });
+            //console.log(energySavingMeasureVM.EnergySavingMeasures());
+            return false;
+        });
+        ko.applyBindings(energySavingMeasureVM, $("#EnergySavingMeasuresArea")[0]);*@
+
+        //$(".energy-saving-measures").find("input").filter(".currency").each(function (k, v) {
+        //    var self = $(v);
+        //    if (self) {
+        //        //console.log(self.val());
+        //        var numBox = self.data("kendoNumericTextBox");
+        //        if (parseInt(self.val()) == 0) {
+        //            self.val("");//.attr("required", false);
+        //            if (numBox) {
+        //                numBox.value("");
+        //            }
+        //        }
+        //    }
+        //});
+
+        $(".energy-saving-measures").find("input").filter(".currency").blur(function () {
+            var sum = 0;
+            for (var i = 0; i <= 10; i++) {
+                var value = $("#ApplicationExtraInfo_EnergySavingMeasureNO" + i + "_Amount").val();//data("kendoNumericTextBox").value();
+                if (value && value > 0) {
+                    //alert(value);
+                    sum += parseFloat(value);
+                }
+            }
+            $("#EnergySavingSum").data("kendoNumericTextBox").value(sum);
+        });
+
+        $("[name='HasAgreed']").click(function () {
+            var isChecked = $(this).is(':checked');
+            $("input[type=submit]").prop('disabled', !isChecked);
+        });
+
+        $("#ApplicationBasicInfo_LoanAmount").kendoNumericTextBox({
+            //culture: "fo",
+            format: "c0",
+            decimals: 0,
+            min: 50000,
+            max: 350000,
+            spinners: false
+        });
+    });
+</script>

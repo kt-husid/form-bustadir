@@ -1,0 +1,1040 @@
+﻿@model BustadirForm.Models.BasicFamilyInfo
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Umsókn - Tilmelding</title>
+
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+
+    <style type='text/css'>
+        body {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #3D3D3C;
+        }
+
+        td p {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            color: #3D3D3C;
+            margin-bottom: 3px;
+        }
+
+        p {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+
+        h3 {
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #3D3D3C;
+            font-weight: normal;
+            font-weight: bold;
+        }
+
+        #mainContent {
+            width: 98%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid black;
+        }
+
+        table tr td table tr td {
+            padding-top: 2px;
+            padding-right: 20px;
+            vertical-align: bottom;
+            border: 1px solid black;
+        }
+
+        body table tr td {
+            border: none;
+        }
+    </style>
+</head>
+<body style='width:99%;'>
+    <div style='clear: both' />
+
+    <table style='width: 98%;'>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td>
+                            <p>Ordranummar</p>
+                            @Model.PaymentData.OrderId
+                        </td>
+                        <td>
+                            <p>Transaction Id</p>
+                            @Model.PaymentData.TransactionId
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Transaction Date</p>
+                            @Model.PaymentData.TransactionDate
+                        </td>
+                        <td>
+                            <p>Transaction Status</p>
+                            @Model.PaymentData.TransactionStatus
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>
+                            <p>Card Mask</p>
+                            @Model.PaymentData.CardNumberMasked
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <h3>HVUSSU ER HÚSKIÐ SAMANSETT?</h3>
+
+    <table style='width: 98%;'>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style='width: 80%;'>
+                            <p>* Navn og eftirnavn á umsøkjara</p>
+                            <span id='nameOfApplication'>
+                                @Model.FullNameApplicant
+                            </span>
+                        </td>
+                        <td style='width: 20%;'>
+                            <p>* P-tal</p>
+                            @(string.IsNullOrEmpty(@Model.SSN) == false ? @Model.SSN.Replace("_", "") : "")
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style='width: 80%;'>
+                            <p>Navn og eftirnavn á hjúnarfelaga / sambúgva</p>
+                            @Model.FullNameOfPartner
+                        </td>
+                        <td style='width: 20%;'>
+                            <p>P-tal</p>
+                            @(string.IsNullOrEmpty(@Model.PartnerSSN) == false ? @Model.PartnerSSN.Replace("_", "") : "")
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style='width: 60%;'>
+                            <p>* Núverandi bústaður</p>
+                            @Model.CurrentAddress
+                        </td>
+                        <td style='width: 40%;'>
+                            <p>* Teldupostur</p>
+                            <span id='emailOfApplicant'>
+                                @Model.EmailAddress
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style='width: 20%;'>
+                            <p>* Postnummar</p>
+                            @Model.PostalCode
+                        </td>
+                        <td style='width: 40%;'>
+                            <p>* Býur / bygd</p>
+                            @Model.CityName
+                        </td>
+                        <td style='width: 40%;'>
+                            <p>* Land</p>
+                            @Model.Country
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 20%;'>
+                            <p>* Fartelefon</p>
+                            @(string.IsNullOrEmpty(@Model.MobilePhone) == false ? @Model.MobilePhone.Replace("_", "") : "")
+                        </td>
+                        <td style='width: 40%;'>
+                            <p>Heimatelefon</p>
+                            @(string.IsNullOrEmpty(@Model.HomePhone) == false ? @Model.HomePhone.Replace("_", "") : "")
+                        </td>
+                        <td style='width: 40%;'>
+                            <p>Arbeiðstelefon</p>
+                            @(string.IsNullOrEmpty(@Model.WorkPhone) == false ? @Model.WorkPhone.Replace("_", "") : "")
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style='width: 30%;'>
+                            <p>
+                                * Tal á heimabúgvandi børnum:  @(Model.ChildrenLivingHomeUnderEighteen_SSN_List != null ? Model.ChildrenLivingHomeUnderEighteen_SSN_List.Where(x => x.Trim().Length > 6).Count() : 0)
+                            </p>
+                        </td>
+                        <td style='width: 70%;'>
+                            @{
+                                if (Model.ChildrenLivingHomeUnderEighteen_SSN_List != null)
+                                {
+                                    foreach (var item in Model.ChildrenLivingHomeUnderEighteen_SSN_List.Where(x => x.Trim().Length > 6))
+                                    {
+                                        <p>P-tal: @item</p>
+                                    }
+                                }
+                            }
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        @*<tr>
+                <td>
+                    <table style='width: 100%;'>
+                        <tr>
+                            <td style='width: 30%;'>
+                                <p>
+                                    Tal av børnum undir 18 ár, ið ikki búgva heima fulla tíð: <strong>@(Model.ChildrenLivingHomeUnderEighteenNotLivingAtHomeFullTime_SSN_List != null ? Model.ChildrenLivingHomeUnderEighteenNotLivingAtHomeFullTime_SSN_List.Where(x => x.Trim().Length > 6).Count() : 0)</strong>
+                                </p>
+                            </td>
+                            <td style='width: 70%;'>
+                                @{
+                                    if (Model.ChildrenLivingHomeUnderEighteenNotLivingAtHomeFullTime_SSN_List != null)
+                                    {
+                                        foreach (var item in Model.ChildrenLivingHomeUnderEighteenNotLivingAtHomeFullTime_SSN_List.Where(x => x.Trim().Length > 6))
+                                        {
+                                <p>P-tal: @item</p>
+                                        }
+                                    }
+                                }
+
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>*@
+        <tr>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td style='width: 30%;'>
+                            <p>
+                                * Leigar tú frá Føroya bústaðafelag?
+                            </p>
+                            @(Model.IsRentingFromFaroeseDwellingCommunity ? "Ja" : "Nei")
+                        </td>
+                        <td style='width: 70%;'>
+                            @if (Model.IsRentingFromFaroeseDwellingCommunity)
+                            {
+                                <p>* Hvar?</p>
+                                @Model.FaroeseDwellingCommunityLocation
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <br />
+    <h3>Hvussu ynskir húskið at búgva?</h3>
+
+
+    <table style='width: 98%;'>
+        @*<tr>
+                <td>
+                    <table style='width: 100%;'>
+                        <tr>
+                            <td colspan='3'>
+                                <p>*Nær ynskir tú at flyta inn í bústaðin?</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan='3'>
+                                @Model
+                                Skjótast gjørligt
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>*@
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style="width: 50%">
+                            <p>
+                                * Hvørja støðu ynskir tú at hava á bíðilistanum?
+                            </p>
+                        </td>
+                        <td style="width: 50%">
+                            <p>
+                                @(Model.IsActiveMember.Value ? "Søkjandi limur" : "Hvílandi limur")
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style="width: 50%">
+                            <p>
+                                * Hvat slag av bústað søkir tú?
+                            </p>
+                        </td>
+                        <td style="width: 50%">
+                            <p>
+                                @*@Model.TypeOfApartment*@
+                                @(Model.TypeOfApartment1 ? "Vanligan bústað, " : "Vanligan bústað,")
+                                @(Model.TypeOfApartment2 ? "Lestrarbústað, " : "")
+                                @(Model.TypeOfApartment3 ? "Eldrabústað (60+ ár)" : "")
+                            </p>
+                            @if (Model.TypeOfApartment2)
+                            {
+                                <p>Hvørji útbúgving ert tú undir?</p>
+                                @Model.TypeOfEducation
+                            }
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td>
+                            <p>Hvar í landinum ynskir tú at búgva?</p>
+                        </td>
+                    </tr>
+                </table>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style="width: 20%">
+                            <p>Raðfesting</p>
+                        </td>
+                        <td style="width: 80%">
+                            <p>
+                                Øki
+                                @*Bygd, býlingur*@
+                            </p>
+                        </td>
+                    </tr>
+                    @*<tr>
+                            <td>
+                                Norðoyggjar
+                            </td>
+                            <td style='text-align: center;'>
+                                @Model.WishListArea0.Ranking
+                            </td>
+                            <td>
+                                @Model.WishListArea0.CityAndBuildingName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Eysturoy
+                            </td>
+                            <td style='text-align: center;'>
+                                @Model.WishListArea1.Ranking
+                            </td>
+                            <td>
+                                @Model.WishListArea1.CityAndBuildingName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Norðurstreymoy
+                            </td>
+                            <td style='text-align: center;'>
+                                @Model.WishListArea2.Ranking
+                            </td>
+                            <td>
+                                @Model.WishListArea2.CityAndBuildingName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Suðurstreymoy
+                            </td>
+                            <td style='text-align: center;'>
+                                @Model.WishListArea3.Ranking
+                            </td>
+                            <td>
+                                @Model.WishListArea3.CityAndBuildingName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Vágoy
+                            </td>
+                            <td style='text-align: center;'>
+                                @Model.WishListArea4.Ranking
+                            </td>
+                            <td>
+                                @Model.WishListArea4.CityAndBuildingName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Sandoy
+                            </td>
+                            <td style='text-align: center;'>
+                                @Model.WishListArea5.Ranking
+                            </td>
+                            <td>
+                                @Model.WishListArea5.CityAndBuildingName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Suðuroy
+                            </td>
+                            <td style='text-align: center;'>
+                                @Model.WishListArea6.Ranking
+                            </td>
+                            <td>
+                                @Model.WishListArea6.CityAndBuildingName
+                            </td>
+                        </tr>*@
+                    @{
+                        var c1 = 0;
+                        foreach (var item in Model.WishListAreas)
+                        {
+                            if (@item != null)
+                            {
+                                <tr>
+                                    <td style='text-align: center;'>
+                                        @(c1 == 0 ? "* " : "") @item.Ranking
+                                    </td>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                </tr>
+                            }
+                            c1++;
+                        }
+                    }
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td style="width:100%;">
+                            <p>* Hvussu nógv rúm ynskir tú?</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%;">
+                            @(Model.WantsOneRoom ? "1 rúm, " : "")
+                            @(Model.WantsTwoRooms ? "2 rúm, " : "")
+                            @(Model.WantsThreeRooms ? "3 rúm, " : "")
+                            @(Model.WantsFourRooms ? "4 rúm, " : "")
+                            @(Model.WantsFiveRooms ? "5 rúm, " : "")
+                            @(Model.WantsSixRooms ? "6 rúm " : "")
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td style="width:100%;">
+                            <p>* Í hvørji hædd ynskir tú at bústaðurin liggur?</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentHeightPlacement)
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <p>* Hvussu nógv kann húskið í mesta lagi rinda fyri bústaðin uttan ljós og hita?</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @*@Model.ApartmentCostWithoutLightAndHeat*@
+                            @(Model.ApartmentCostWithoutLightAndHeatOption0 ? "2.000 - 3.000 kr, " : "")
+                            @(Model.ApartmentCostWithoutLightAndHeatOption1 ? "3.000 - 4.000 kr, " : "")
+                            @(Model.ApartmentCostWithoutLightAndHeatOption2 ? "4.000 - 5.000 kr, " : "")
+                            @(Model.ApartmentCostWithoutLightAndHeatOption3 ? "5.000 - 6.000 kr, " : "")
+                            @(Model.ApartmentCostWithoutLightAndHeatOption4 ? "6.000 - 7.000 kr, " : "")
+                            @(Model.ApartmentCostWithoutLightAndHeatOption5 ? "7.000 - 8.000 kr, " : "")
+                            @(Model.ApartmentCostWithoutLightAndHeatOption6 ? "8.000 kr - ella yvir" : "")
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <p>* Ynskir tú bústað, har loyvt er at hava húsdjór?</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @*(Model.HasPet ? "Ja" : "Nei")*@
+                            @Kthusid.Enum.EnumHelper.GetDescription(@Model.HasPet)
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <p>Hevur tú tørv á bústaði, ið er atkomuligur og kann nýtast av fólki í koyristóli?</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @(Model.HasSpecialNeeds ? "Ja" : "Nei")
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        @{
+            if (@Model.HasSpecialNeeds)
+            {
+                <tr style=''>
+                    <td style='width: 100%;'>
+                        <table style='width: 100%'>
+                            <tr>
+                                <td style='width: 100%'>
+                                    <p>* Annar tørvur:</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='width: 100%'>
+                                    @Model.SpecialNeedsComment
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            }
+        }
+        <tr>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td style="width:100%;">
+                            <p>
+                                Aðrar viðmerkingar
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:100%;">
+                            @Model.Comments
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+
+
+    <br />
+    <br />
+    <h3>Sjálvbodnar upplýsingar</h3>
+
+
+    <table style='width: 98%;'>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td>
+                            <p>
+                                Hvør er hægsta útbúgvingin tú (og møguligur maki) ert liðugur við?
+                            </p>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            Fólkaskúli
+                        </td>
+                        <td style='width: 15%;'>
+                            Tú: @(Model.EducationLevel0.HasDiploma ? "Ja" : "Nei")
+                        </td>
+                        <td style='width: 15%;'>
+                            Makin: @(Model.EducationLevel0.PartnerHasDiploma ? "Ja" : "Nei")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            Miðnámsútbúgving
+                        </td>
+                        <td style='width: 15%;'>
+                            Tú: @(Model.EducationLevel1.HasDiploma ? "Ja" : "Nei")
+                        </td>
+                        <td style='width: 15%;'>
+                            Makin: @(Model.EducationLevel1.PartnerHasDiploma ? "Ja" : "Nei")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            Handverkaraútbúgving / skrivstovuútbúgving
+                        </td>
+                        <td style='width: 15%;'>
+                            Tú: @(Model.EducationLevel2.HasDiploma ? "Ja" : "Nei")
+                        </td>
+                        <td style='width: 15%;'>
+                            Makin: @(Model.EducationLevel2.PartnerHasDiploma ? "Ja" : "Nei")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            Styttri útbúgving frá hægri lærustovni (2¼ ár)
+                        </td>
+                        <td style='width: 15%;'>
+                            Tú: @(Model.EducationLevel3.HasDiploma ? "Ja" : "Nei")
+                        </td>
+                        <td style='width: 15%;'>
+                            Makin: @(Model.EducationLevel3.PartnerHasDiploma ? "Ja" : "Nei")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            Miðal útbúgving frá hægri lærustovni (upp til 4 ár)
+                        </td>
+                        <td style='width: 15%;'>
+                            Tú: @(Model.EducationLevel4.HasDiploma ? "Ja" : "Nei")
+                        </td>
+                        <td style='width: 15%;'>
+                            Makin: @(Model.EducationLevel4.PartnerHasDiploma ? "Ja" : "Nei")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            Longri útbúgving frá hægri lærustovni (yvir 4 ár)
+                        </td>
+                        <td style='width: 15%;'>
+                            Tú: @(Model.EducationLevel5.HasDiploma ? "Ja" : "Nei")
+                        </td>
+                        <td style='width: 15%;'>
+                            Makin: @(Model.EducationLevel5.PartnerHasDiploma ? "Ja" : "Nei")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            Annað
+                        </td>
+                        <td style='width: 15%;'>
+                            Tú: @(Model.EducationLevel6.HasDiploma ? "Ja" : "Nei")
+                        </td>
+                        <td style='width: 15%;'>
+                            Makin: @(Model.EducationLevel6.PartnerHasDiploma ? "Ja" : "Nei")
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <table style='width: 98%;'>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                Hvussu stór var samlaða skattaskylduga inntøkan hjá húskinum í fjør?
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Model.TotalIncomeBeforeTax
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                <strong>Hvat hevur týdning fyri teg, tá tú velur bústað?</strong>
+                            </p>
+                        </td>
+                        <td style='width: 30%;'></td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                Atgongd til hjall
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraOutdoorHouse)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                Atgongd til arbeiðsskúr
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraWorkHouse)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                Atgongd til altan / terassu
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraBalcony)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                Egna vaskimaskinu
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraOwnWashingMachine)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                At tú ikki hevur yvir- og undirbúgvar
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraNoNeighboursAboveOrBelow)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                Útsýni
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraGoodView)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                At skúli / barnagarður er tætt við
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraSchoolKindergardenNearby)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                At bústaðurin liggur mitt í býnum
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraIsNearCentrum)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                At matvøruhandil er tætt við
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraShoppingMallNearby)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                Busssambandið
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraGoodBusConnections)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                At økið er friðaligt
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraFriendlyNeighbourhood)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 70%;'>
+                            <p>
+                                At økið er barnavinaligt
+                            </p>
+                        </td>
+                        <td style='width: 30%;'>
+                            <p>
+                                @Kthusid.Enum.EnumHelper.GetDescription(@Model.ApartmentExtraFriendlyNeighbourhoodForChildren)
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style='width: 100%;'>
+                            <p>
+                                Onnur ynski
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 100%;'>
+                            <p>
+                                @Model.ApartmentExtraWishes
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <br />
+    <h3>VERANDI BÚSTAÐUR</h3>
+
+    <table style='width: 98%;'>
+        <tr>
+            <td>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style='width: 100%;'>
+                            <p>
+                                Hvar býrt tú í løtuni:
+                                @{
+                                    if (@Model.CurrentlyLivingAt != BustadirForm.Models.ECurrentLivingStatus.OTHER)
+                                    {
+                                        <span>@Kthusid.Enum.EnumHelper.GetDescription(@Model.CurrentlyLivingAt)</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@Model.CurrentlyLivingAtOtherPlace</span>
+                                    }
+                                }
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style='width: 55%;'>
+                            <p>
+                                Um tú leigar hús / íbúð, hvussu nógv rindar tú pr. mánað ?
+                            </p>
+                        </td>
+                        <td style='width: 15%;'>
+                            <p>
+                                Leiga:
+                                <br />
+                                @string.Format("{0:C0}", @Model.RentalCost)
+                            </p>
+                        </td>
+                        <td style='width: 15%;'>
+                            <p>
+                                El:
+                                <br />
+                                @string.Format("{0:C0}", @Model.RentalCostElectricity)
+                            </p>
+                        </td>
+                        <td style='width: 15%;'>
+                            <p>
+                                Olja:
+                                <br />
+                                @string.Format("{0:C0}", @Model.RentalCostOil)
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <table style='width: 100%;'>
+                    <tr>
+                        <td style='width: 80%;'>
+                            <p>
+                                Hvussu verður bústaðurin upphitaður?
+                            </p>
+                        </td>
+                        <td style='width: 20%;'>
+                            <p>
+                                @Model.ApartmentHeatingType
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 80%;'>
+                            <p>
+                                Hvussu stór er gólvvíddin á tínum núverandi bústaði?
+                            </p>
+                        </td>
+                        <td style='width: 20%;'>
+                            <p>
+                                @Model.ApartmentFloorSize m<sup>2</sup>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='width: 80%;'>
+                            <p>
+                                Hvussu leingi hevur tú búð í tinum núverandi bústaði?
+                            </p>
+                        </td>
+                        <td style='width: 20%;'>
+                            <p>
+                                @{
+                                    if (@Model.ApartmentRecidencePeriod != null)
+                                    {
+                                        @Model.ApartmentRecidencePeriod.ApartmentRecidenceYears <span>ár</span> @Model.ApartmentRecidencePeriod.ApartmentRecidenceMonths <span>mánaðir</span>
+                                    }
+                                }
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <table style="width:100%;">
+                    <tr>
+                        <td style="width:100%;">
+                            <p>HVÍ YNSKIR TÚ / TIT ANNAN BÚSTAÐ?</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @{
+                                <ul>
+                                    @foreach (var item in Model.ReasonForNewApartment)
+                                    {
+                                        if (item.ToLower().Trim() != "onnur orsøk")
+                                        {
+                                            <li>@item</li>
+                                        }
+                                    }
+                                </ul>
+                                <br />
+                                if (!string.IsNullOrEmpty(Model.OtherReasonForNewApartment))
+                                {
+                                    <span>Onnur orsøk:<br />@Model.OtherReasonForNewApartment</span>
+                                }
+                                @*if (@Model.ReasonForNewApartment == BustadirForm.Models.EReasonForNewApartment.OTHER)
+                                    {
+                                        @Model.OtherReasonForNewApartment
+                                    }
+                                    else
+                                    {
+                                        @Kthusid.Enum.EnumHelper.GetDescription(@Model.ReasonForNewApartment)
+                                    }*@
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

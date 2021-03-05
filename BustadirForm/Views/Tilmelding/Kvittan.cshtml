@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Bústaðir - Kvittan fyri innlimingargjald";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <h1>Kvittan</h1>
+
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-12 ">
+            <p class="text-left">
+                Tú ert nú vorðin limur í Bústaðir – Føroya bústaðafelag og fært keypsváttan sendandi í telduposti.
+                <br />
+                Ein av komandi døgunum fær tú eitt bræv við tínum nummari á bíðilistanum.
+                <br />
+                <br />
+
+                <strong>Ordranummar</strong>
+                @Model.PaymentData.OrderId
+
+                <br />
+
+                <strong>Transaction Id</strong>
+                @Model.PaymentData.TransactionId
+
+                <br />
+
+                <strong>Dagfesting</strong>
+                @string.Format("{0:g}", @Model.PaymentData.TransactionDate)
+
+                <br />
+
+                <strong>Transaction Status</strong>
+                @Model.PaymentData.TransactionStatus
+
+                <br />
+
+                <strong>Card Mask</strong>
+                @Model.PaymentData.CardNumberMasked
+
+                <br />
+                <br />
+                Takk fyri.
+                <br />
+                <br />
+            </p>
+            @*<h4>Reponse List</h4>
+                <ul>
+                    @{
+                        var responseList = ViewBag.PaymentResponseList as Dictionary<string, string>;
+                        foreach (var item in responseList)
+                        {
+                            <li>
+                                @item.Key = @item.Value
+                            </li>
+                        }
+                    }
+                </ul>*@
+        </div>
+    </div>
+</div>

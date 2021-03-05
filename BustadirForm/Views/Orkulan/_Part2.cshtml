@@ -1,0 +1,506 @@
+﻿@model BustadirForm.Models.Orkulan
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "Part2" }))
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="container">
+
+            @*<div class="row">
+                    <div class="col-md-12">
+                        <h4>
+                            @Html.LabelFor(m => m.ApplicationExtraInfo.IncomeLoanTaker)
+                        </h4>
+                    </div>
+                </div>*@
+
+
+            @*<div class="row" style="margin-top:50px;">
+                <div class="col-md-12">*@
+            @*<div class="row">
+                    <div class="col-md-9">
+                        <label class="control-label">
+                            Nøvn og ársinntøkur hjá lántakara / hjúnafelaga / samánara
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.ApplicationExtraInfo.IncomeLoanTaker.YearlyIncome, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.ApplicationExtraInfo.IncomeLoanTaker.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.IncomeLoanTaker.FullName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.ApplicationExtraInfo.IncomeLoanTaker.YearlyIncome, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                        @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.IncomeLoanTaker.YearlyIncome, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            @*<div class="row">
+                    <div class="col-md-8">
+                        <label class="control-label">
+                            Navn og ársinntøkur hjá lántakara
+                        </label>
+                        @Html.EditorFor(model => model.ApplicationExtraInfo.IncomeLoanTaker.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.IncomeLoanTaker.FullName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ApplicationExtraInfo.IncomeLoanTaker.YearlyIncome, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.ApplicationExtraInfo.IncomeLoanTaker.YearlyIncome, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                        @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.IncomeLoanTaker.YearlyIncome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <label class="control-label">
+                            Navn og ársinntøkur hjá hjúnafelaga
+                        </label>
+                        @Html.EditorFor(model => model.ApplicationExtraInfo.IncomeSpouse.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.IncomeSpouse.FullName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ApplicationExtraInfo.IncomeSpouse.YearlyIncome, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.ApplicationExtraInfo.IncomeSpouse.YearlyIncome, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                        @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.IncomeSpouse.YearlyIncome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <label class="control-label">
+                            Navn og ársinntøkur hjá samánara
+                        </label>
+                        @Html.EditorFor(model => model.ApplicationExtraInfo.IncomePartner.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.IncomePartner.FullName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ApplicationExtraInfo.IncomePartner.YearlyIncome, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        @Html.EditorFor(model => model.ApplicationExtraInfo.IncomePartner.YearlyIncome, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                        @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.IncomePartner.YearlyIncome, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+            @*</div>
+                </div>*@
+
+            <div class="row" style="margin-top:50px">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h4>
+                                Lán í ognini
+                            </h4>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label bold-label">
+                                Banki (vel úr listanum)
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label bold-label">
+                                Lánsupphædd
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label bold-label">
+                                Mánaðargjald
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.MortageLoanNO1, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.ApplicationExtraInfo.MortageLoanNO1.Bank, ViewBag.BankId as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.MortageLoanNO1.Bank, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.MortageLoanNO1.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "1. veðrættarlán - Lánsupphædd" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.MortageLoanNO1.Amount, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.MortageLoanNO1.MontlyPayment, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "1. veðrættarlán - Mánaðargjald" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.MortageLoanNO1.MontlyPayment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.MortageLoanNO2, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.ApplicationExtraInfo.MortageLoanNO2.Bank, ViewBag.BankId as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.MortageLoanNO2.Bank, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.MortageLoanNO2.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "2. veðrættarlán - Lánsupphædd" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.MortageLoanNO2.Amount, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.MortageLoanNO2.MontlyPayment, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "2. veðrættarlán - Mánaðargjald" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.MortageLoanNO2.MontlyPayment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.MortageLoanNO3, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.ApplicationExtraInfo.MortageLoanNO3.Bank, ViewBag.BankId as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.MortageLoanNO3.Bank, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.MortageLoanNO3.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "3. veðrættarlán - Lánsupphædd" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.MortageLoanNO3.Amount, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.MortageLoanNO3.MontlyPayment, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "3. veðrættarlán - Mánaðargjald" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.MortageLoanNO3.MontlyPayment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group" style="margin-top:50px;">
+                        <div class="col-md-3">
+                            <h4>
+                                * Ognin er tryggjað hjá
+                            </h4>
+                        </div>
+                        <div class="col-md-9">
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.InsuranceCompany, new { @required = "required", @validationMessage = "Ognin er tryggjað hjá" })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.InsuranceCompany, "", new { @class = "text-danger" })
+                            <div class="btn-group" data-toggle="buttons" id="ChooseInsuranceCompany">
+                                <label class='btn @(@Model.ApplicationExtraInfo.InsuranceCompany == "Tryggingarfelagnum Føroyar" ? "active btn-primary" : "btn-default")'>
+                                    <input type="radio" autocomplete="off" value="Tryggingarfelagnum Føroyar" /> Tryggingarfelagnum Føroyar
+                                </label>
+                                <label class='btn @(@Model.ApplicationExtraInfo.InsuranceCompany == "Trygd" ? "active btn-primary" : "btn-default")'>
+                                    <input type="radio" autocomplete="off" value="Trygd"> Trygd
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:50px">
+                <div class="col-md-12">
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <h4>
+                                Onnur lán við veð í fastari ogn, matr. nr.
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <label class="control-label bold-label">
+
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label bold-label">
+                                Banki (vel úr listanum)
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label bold-label">
+                                Lánsupphædd
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label bold-label">
+                                Mánaðargjald
+                            </label>
+                        </div>
+                    </div>
+                    @*<div class="row form-group">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ApplicationExtraInfo.OtherPropertyLoans, htmlAttributes: new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.DropDownListFor(model => model.ApplicationExtraInfo.OtherPropertyLoans.Bank, ViewBag.BankId as SelectList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.OtherPropertyLoans.Bank, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.ApplicationExtraInfo.OtherPropertyLoans.Amount, new { htmlAttributes = new { @class = "currency", @style="width:100%;" } })
+                                @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.OtherPropertyLoans.Amount, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.EditorFor(model => model.ApplicationExtraInfo.OtherPropertyLoans.MontlyPayment, new { htmlAttributes = new { @class = "currency", @style="width:100%;" } })
+                                @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.OtherPropertyLoans.MontlyPayment, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.CarLoans, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.ApplicationExtraInfo.CarLoans.Bank, ViewBag.BankId as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.CarLoans.Bank, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.CarLoans.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.CarLoans.Amount, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.CarLoans.MontlyPayment, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.CarLoans.MontlyPayment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.BoatLoans, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.ApplicationExtraInfo.BoatLoans.Bank, ViewBag.BankId as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.BoatLoans.Bank, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.BoatLoans.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.BoatLoans.Amount, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.BoatLoans.MontlyPayment, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.BoatLoans.MontlyPayment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.OtherExpenditureLoans, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.ApplicationExtraInfo.OtherExpenditureLoans.Bank, ViewBag.BankId as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.OtherExpenditureLoans.Bank, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.OtherExpenditureLoans.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.OtherExpenditureLoans.Amount, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.OtherExpenditureLoans.MontlyPayment, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.OtherExpenditureLoans.MontlyPayment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.OtherLoans, htmlAttributes: new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.DropDownListFor(model => model.ApplicationExtraInfo.OtherLoans.Bank, ViewBag.BankId as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.OtherLoans.Bank, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.OtherLoans.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.OtherLoans.Amount, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.OtherLoans.MontlyPayment, new { htmlAttributes = new { @class = "currency", @style = "width:100%;" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.OtherLoans.MontlyPayment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- todo: debug-->
+
+
+            <div class="row" style="margin-top:50px">
+                <div class="col-md-12">
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            <h4>
+                                Fastar útreiðslur
+                            </h4>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label bold-label">
+                                Mánaðargjald
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.RegularExpenditureElectricity, htmlAttributes: new { @class = "control-label" })
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.RegularExpenditureElectricity.Description)
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.RegularExpenditureElectricity.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "Fastar útreiðslur - SEV" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.RegularExpenditureElectricity.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.RegularExpenditureOil, htmlAttributes: new { @class = "control-label" })
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.RegularExpenditureOil.Description)
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.RegularExpenditureOil.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "Fastar útreiðslur - Olja" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.RegularExpenditureOil.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.RegularExpenditurePublicService, htmlAttributes: new { @class = "control-label" })
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.RegularExpenditurePublicService.Description)
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.RegularExpenditurePublicService.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "Fastar útreiðslur - Kringvarpsgjald kr." } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.RegularExpenditurePublicService.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.RegularExpenditureChildcare, htmlAttributes: new { @class = "control-label" })
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.RegularExpenditureChildcare.Description)
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.RegularExpenditureChildcare.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "Fastar útreiðslur - Barnaansing" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.RegularExpenditureChildcare.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.RegularExpenditurePhone, htmlAttributes: new { @class = "control-label" })
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.RegularExpenditurePhone.Description)
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.RegularExpenditurePhone.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "Fastar útreiðslur - Telefon" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.RegularExpenditurePhone.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.RegularExpenditureInternet, htmlAttributes: new { @class = "control-label" })
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.RegularExpenditureInternet.Description)
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.RegularExpenditureInternet.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "Fastar útreiðslur - Internet" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.RegularExpenditureInternet.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.RegularExpenditureCableTV, htmlAttributes: new { @class = "control-label" })
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.RegularExpenditureCableTV.Description)
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.RegularExpenditureCableTV.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "Fastar útreiðslur - Televarp/parabol" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.RegularExpenditureCableTV.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.RegularExpenditureRoadTax, htmlAttributes: new { @class = "control-label" })
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.RegularExpenditureRoadTax.Description)
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.RegularExpenditureRoadTax.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "Fastar útreiðslur - Vegskattur" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.RegularExpenditureRoadTax.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.RegularExpenditureCarInsurane, htmlAttributes: new { @class = "control-label" })
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.RegularExpenditureCarInsurane.Description)
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.RegularExpenditureCarInsurane.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "Fastar útreiðslur - Biltrygging" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.RegularExpenditureCarInsurane.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.RegularExpenditureHouseInsurance, htmlAttributes: new { @class = "control-label" })
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.RegularExpenditureHouseInsurance.Description)
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.RegularExpenditureHouseInsurance.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "Fastar útreiðslur - Sethúsatrygging" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.RegularExpenditureHouseInsurance.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-9">
+                            @Html.LabelFor(model => model.ApplicationExtraInfo.RegularExpenditureOther, htmlAttributes: new { @class = "control-label" })
+                            @Html.HiddenFor(model => model.ApplicationExtraInfo.RegularExpenditureOther.Description)
+                        </div>
+                        <div class="col-md-3">
+                            @Html.EditorFor(model => model.ApplicationExtraInfo.RegularExpenditureOther.Amount, new { htmlAttributes = new { @class = "currency", @style = "width:100%;", @required = "required", @validationMessage = "Fastar útreiðslur - Aðrar útreiðslur" } })
+                            @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.RegularExpenditureOther.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @*@foreach (var item in @Model.ApplicationExtraInfo.RegularExpenditures)
+                        {
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label class="control-label bold-label">
+                                    @item.Description
+                                </label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" name="ApplicationExtraInfo.RegularExpenditure.@item.Id" id="ApplicationExtraInfo_RegularExpenditure_@item.Id" value="@item.Amount" class="currency" style="width:100%;" />
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        }*@
+                </div>
+            </div>
+            <!-- end todo -->
+
+            <div class="row" style="margin-top:50px;">
+                <div class="col-md-12">
+                    <h4>
+                        Heimabúgvandi børn
+                    </h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    @Html.LabelFor(model => model.ApplicationExtraInfo.ChildrenLivingAtHome, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="col-md-1">
+                    @Html.EditorFor(model => model.ApplicationExtraInfo.ChildrenLivingAtHome, new { htmlAttributes = new { @class = "numeric-positive-value", @max = 20, @style = "width:70%;", @required = "required", @validationMessage = "Heimabúgvandi børn" } })
+                    @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.ChildrenLivingAtHome, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-8">
+
+                </div>
+            </div>
+
+            @*<div class="row" style="margin-top:50px;">
+                    <div class="col-md-12">
+                        <h4>
+                            Viðmerkingar
+                        </h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <textarea name="ApplicationExtraInfo.Comments" id="ApplicationExtraInfo_Comments" rows="5" class="form-control">@Model.ApplicationExtraInfo.Comments</textarea>
+                        @Html.ValidationMessageFor(model => model.ApplicationExtraInfo.Comments, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+        </div>
+    </div>
+}
+
+<script>
+    $(function () {
+        //EnableDisableToggleFor(".ToggleInsuranceCompany", "input[name=ApplicationExtraInfo.InsuranceCompany]", function (newValue) {
+
+        //});
+
+        $("#ChooseInsuranceCompany .btn").click(function () {
+            var self = $(this);
+            var value = self.text().trim();
+            $('#ApplicationExtraInfo_InsuranceCompany').val(value);
+            self.parent().find(".btn").removeClass("btn-primary").addClass("btn-default").removeClass("active");
+            self.removeClass("btn-default").addClass("btn-primary").addClass("active");
+        });
+
+    });
+</script>
